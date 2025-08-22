@@ -14,7 +14,7 @@ Grâce aux nombres, les ordinateurs stockent des dessins, des photos et d’autr
 
 On distingue deux types d’images numériques:
 \begin{enumerate}[a)]
-\item {\bf L'image matricielle (ou bitmap}:
+\item {\bf L'image matricielle (ou bitmap)}:
 Elle est composée de points appelés pixels que l’on voit pas à l'œil nu. Lors de l’agrandissement l’image peut devenir floue car les pixels ressortent ( les carrés sur l’écran).
 \item {\bf L'image vectorielle}:
 Elle est composée de lignes et de segments qui sont liés entre eux par des formules mathématiques. Grâce à la vectorisation, chaque élément a une place définie qui empêche la déformation de l’image. Au lieu de mémoriser une mosaïque de points élémentaires, on stocke la succession d’opérations conduisant au tracé.
@@ -36,6 +36,32 @@ L’usage de ce type d’image concerne les schémas générés par certains log
 Il n’est pas possible de tout vectoriser car les photos et les dégradés de couleurs ne se vectorisent pas. En effet, la vectorisation aplatit les couleurs et élimine des dégradés.
 
 \end{remarque}
+
+\subsection{Définition et Résolution}
+Il est important de définir les notions suivantes : 
+\subsubsection{Définition}
+ La \textbf{définition} d'une image est le nombre de points (pixels) constituant l’image.
+ 
+\subsubsection{Résolution}
+ La \textbf{résolution} d'une image est le nombre de points par unité de surface, exprimé en points par pouce (PPP, en anglais DPI pour Dots Per Inch), un pouce représentant 2.54 cm.
+
+\begin{center}
+\begin{figure} [h!]
+\centering
+\includegraphics[width=8cm]{images/dpi_poisson.png}
+\caption{Résolution d'une image}
+\end{figure}
+\end{center}
+
+\subsubsection{Dimension}
+La \textbf{dimension} d’une image est définie par:
+$$largeur = nombre\ de\ colonnes / resolution$$
+$$hauteur = nombre\ de\ ligne / resolution$$
+
+Exemple: Une image de 1024x768 pixels avec une résolution de 300 dpi aura une:
+$$largeur = 1024 / 300 = 3,41 pouces (8,66 cm)$$
+$$hauteur = 768 / 300 = 2,56 pouces (6,5 cm)$$
+
 
 \subsection{Coder une image en noir et blanc}
 
@@ -451,6 +477,23 @@ Encoder l'image suivante:
 \end{exercice}
 
 
+
+\begin{exercice}
+    
+Combien d’octets occupe une image de 200 x 300 pixels en noir et blanc?
+\end{exercice}
+
+\begin{exercice}
+\begin{enumerate}
+\item 
+    Combien d'octets occupe une image de 300 x 500 pixels en niveau de gris codé sur 8 bits ?
+      \item
+        Même question mais si on a une en couleur pour laquelle chaque couleur est codé en RVB sur 24 bits
+\end{enumerate}
+
+\end{exercice}
+
+
 \begin{exercice}
 \begin{enumerate}
     \item Combien de niveaux de gris pourrait-on encoder sur 10 bits ?
@@ -462,5 +505,18 @@ Encoder l'image suivante:
     \item Quel est d'après vous la couleur correspondant au code RGB suivant : (255, 128, 0) ? % orange
 \end{enumerate}
 \end{exercice}
+
+\begin{exercice}
+Si une image codée en RVB (RGB) de 16,7 millions de couleurs occupe 2400 octets, de combien de pixels sera-t-elle constituée ?
+\end{exercice}
+
+
+\begin{exercice}
+ * J’aimerais imprimer une image full hd (1920 x 1080 pixels) sur mon imprimante qui a une résolution de 1200 dpi. 
+Quelles seront les dimensions en centimètre (largeur et hauteur) ?
+
+\end{exercice}
+
+
 
 \end{document}
