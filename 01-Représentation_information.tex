@@ -33,6 +33,7 @@ L'{\bf octet} (en anglais {\bf byte} ou B majuscule dans les notations) est une 
 
 D'autres termes sont aussi utilisés pour définir certaines longueurs de nombre:
 \begin{itemize}
+\item Un octet est l’unité de base de la mémoire des ordinateurs.
 \item Une unité d'information composée de 16 bits est généralement appelée {\bf mot} (en anglais {\bf word}).
 
 \item Une unité d'information de 32 bits de longueur est appelée {\bf mot double} (en anglais {\bf double word}, d'où l'appellation dword).
@@ -66,7 +67,7 @@ Comptons en binaire pour voir comment ça fonctionne.
 \text{Binaire} & 0 & 1 & 10 & 11 & 100 & 101 & 110 & 111 & 1000 & 1001 & 1010 \\
 \end{array}
 \]
-Entrons dans le détail pour comprendre comment convertir des nombres binaires et nombres décimaux et l'inverse.
+Entrons dans le détail pour comprendre comment convertir des nombres binaires et nombres décimaux et inversement.
 \subsubsection{Conversion binaire décimale}
 
 Une méthode pour obtenir le nombre en base 10, connaissant son écriture en base 2, est d'établir la valeur de chaque chiffre du nombre: celui le plus à droite représente 1, le deuxième représente 2, le troisième représente $2^2=4$, le quatrième représente $2^3=8$, etc. comme dans la grille ci-dessous :  
@@ -85,9 +86,10 @@ Une méthode pour obtenir le nombre en base 10, connaissant son écriture en bas
 \end{tikzpicture}
 \end{center} 
 
-Par exemple si nous voulons connaitre la valeur décimale du nombre 10110, nous établissons d'abord une grille avec les différentes puissances de 2; ensuite, nous plaçons le nombre en binaire sous cette grille en mettant bien le chiffre des unités sous le carré le plus à droite:
+Par exemple si nous voulons connaître la valeur décimale du nombre 10110, nous établissons d'abord une grille avec les différentes puissances de 2; ensuite, nous plaçons le nombre en binaire sous cette grille en mettant bien le chiffre des unités sous le carré le plus à droite:
 
 \begin{center}
+
 \begin{tikzpicture}
 	\draw (-1,1) rectangle (0,0) rectangle (1,1) rectangle (2,0) rectangle (3,1) rectangle (4,0) rectangle (5,1) rectangle (6,0);
 	\draw (5.5,0.5) node {$1$};
@@ -123,7 +125,7 @@ N.B. : Ce tableau est extensible à l'infini vers la gauche avec les puissances 
 \'Ecrire en base 10 les nombres suivants:
 \begin{multicols}{2}
 \begin{enumerate}
-\item $101_{(2)}$
+\item $101_{(2)}$ 
 \item $10 000_{(2)}$
 \item $1111_{(2)}$
 \item $10101_{(2)}$
