@@ -29,6 +29,8 @@
 \usepackage{wrapfig}
 \restylefloat{figure}
 %\usepackage{subfig}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{minted}
 
 \usepackage{subcaption}
 
@@ -506,3 +508,6 @@ splittopskip=\topskip, %
 \newcounter{compteurexo}
 \setcounter{compteurexo}{1}
 \newcommand{\getexocompteur}{{\the\numexpr \arabic{compteurexo} - 1 \relax}}
+
+
+\pgfplotsset{compat=1.17}
