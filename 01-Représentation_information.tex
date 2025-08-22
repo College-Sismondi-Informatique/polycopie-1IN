@@ -446,27 +446,42 @@ Le résultat de 104 + 30=134 amène un dépassement de capacité. Le nombre enti
 \item si on additionne deux nombres opposés, nous n'obtenons pas 0. 
 \end{enumerate}
 
-\subsection{* Représentation des nombres en complément à deux}
+\subsection{*Représentation des nombres en complément à deux}
+\subsubsection{Principe du complément à deux}
+Cette représentation résout les problèmes de la représentation signée.
 
-Cette représentation résout les problèmes de la représentation signée. Dans cette représentation, pour obtenir l'opposé d'un nombre positif écrit en binaire, nous allons effectuer les deux étapes suivantes:
+Avec le complément à deux :  
+\begin{itemize}
+  \item les \textbf{nombres positifs} sont représentés normalement (comme en binaire usuel),  
+  \item les \textbf{nombres négatifs} sont représentés d’une manière spéciale qui rend les calculs plus simples.  
+\end{itemize}
+
+Avec $n$ bits, on peut coder :  
+\[
+-2^{n-1} \quad \text{à} \quad 2^{n-1}-1
+\]
+
+\subsubsection{Comment écrire un nombre négatif ?}
+
+Pour trouver le complément à deux d’un nombre négatif, on procède en trois étapes :
+
 \begin{enumerate}
- \item On inverse tous les bits du nombre positif (on change les 0 en 1 et inversement). Cela s'appelle le {\bf complément à 1}.
- \item On ajoute 1.
-\end{enumerate}
+  \item On écrit la valeur positive en binaire, sur le nombre de bits choisi. Par exemple, nous aimerions écrire le nombre -80. il faut donc commencer par coder le nombre +80
+  
+  $+80$ sur 8 bits : 
+  \[
+  01010000
+  \]
 
-Par exemple, nous aimerions écrire le nombre -80. 
+  \item On inverse tous les bits (les 0 deviennent 1 et les 1 deviennent 0).  
+  Résultat : 
+  \[
+  10101111
+  \]
 
-Premièrement, 80 s'écrit en binaire: {\bf 01010000}.
+  \item On ajoute $1$ à ce résultat :  
 
-\ 
-
-On prend le complément à 1 de ce nombre, ce qui donne: {\bf 10101111}
-
-\ 
-
-Puis on ajoute 1:
-
-\begin{center}
+  \begin{center}
 \begin{tikzpicture}
 	\draw (0,0) node{$1$}
 				(0.5,0) node{$0$}
@@ -495,13 +510,58 @@ Puis on ajoute 1:
 \end{tikzpicture}
 \end{center}
 
-L'avantage de cette méthode est que la somme deux nombres opposés donnera bien 0.
+  Donc, $-80$ est représenté par \texttt{10110000}.
+\end{enumerate}
+
+\subsubsection{Vérification avec un calcul}
+
+Ce qui rend le complément à deux très pratique, c’est que les additions marchent normalement, même avec des négatifs.  
+
+Exemple : $80 + (-80) = 0$
+
+\[
+\begin{array}{ccccccccc}
+  & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
++ & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\ \hline
+  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+\end{array}
+\]
+
+En ne gardant que les 8 bits de droite, on obtient : 
+\[
+00000000 = 0
+\]
+
+\subsubsection{Exemples de valeurs}
+
+\textbf{Sur 4 bits :}  
+\[
+\begin{array}{ll}
+0111 = +7 & \quad 1111 = -1 \\
+1000 = -8 & \quad 0000 = 0 \\
+\end{array}
+\]
+
+\textbf{Sur 8 bits :}  
+\[
+10000000 = -128 \qquad 01111111 = +127
+\]
+
+\subsubsection{Résumé}
+
+\begin{itemize}
+  \item Le complément à deux est la méthode standard utilisée par les ordinateurs pour représenter les nombres relatifs.  
+  \item Les positifs sont codés normalement.  
+  \item Les négatifs sont obtenus par \textbf{inversion des bits + ajout de 1}.  
+  \item Avec $n$ bits, on peut représenter tous les entiers de $-2^{n-1}$ à $2^{n-1}-1$.  
+  \item Les additions et soustractions fonctionnent de la même façon que pour les positifs, ce qui simplifie les circuits électroniques.  
+\end{itemize}
 
 \begin{exercice}
-En supposant que les nombres soient écrits sur 8 bits, vérifier que 80 + (-80) = 0.
+En supposant que les nombres soient écrits sur 8 bits, vérifier que 5 + (-5) = 0.
 \end{exercice}
 
-\newpage
+
 \subsection{Résumé}
 
 \begin{figure}[h!]
@@ -565,14 +625,12 @@ Nous donnons trois nombres binaires:
 \section{Les codes de caractères}
 
 \subsection{La table ASCII}
-
+Le binaire permet de coder les nombres que les systèmes informatiques peuvent manipuler. Cependant, l'ordinateur doit aussi utiliser des caractères alphanumériques pour mémoriser et transmettre des textes par exemple de l’ordinateur vers l’imprimante, d’un automate programmable vers un terminal, d’un clavier vers un processeur, etc. 
 \begin{center}
 \begin{figure}[h!]
 \centerline{\includegraphics[width=18cm]{images/ASCII2}}
 \end{figure}
 \end{center}
-
-Le binaire permet de coder les nombres que les systèmes informatiques peuvent manipuler. Cependant, l'ordinateur doit aussi utiliser des caractères alphanumériques pour mémoriser et transmettre des textes par exemple de l’ordinateur vers l’imprimante, d’un automate programmable vers un terminal, d’un clavier vers un processeur, etc. 
 
 Le code {\bf ASCII} (American Standard Code for Information Interchange) représente les caractères sur 7 bits (c'est-à-dire 128 caractères possibles, de 0 à 127). Les codes 0 à 31 ne sont pas des caractères. On les appelle caractères de contrôle car ils permettent de faire des actions telles que : retour à la ligne (CR). Bip sonore (BEL). Les codes 65 à 90 représentent les majuscules. Les codes 97 à 122 représentent les minuscules. Le caractère A par exemple à pour code 65 soit 01000001 en binaire. 
 
@@ -636,5 +694,5 @@ Décoder en lettres les mots suivants qui sont codés en ASCII étendu (binaire)
 \end{exercice}
 
 \subsection{Annexe - Table ASCII étendue}
-\includepdf[pages=-]{images/3_Table-ASCII_étendue_MS.pdf}
+\includepdf[pages=-, angle=90]{images/3_Table-ASCII_étendue_MS.pdf}
 \end{document}
