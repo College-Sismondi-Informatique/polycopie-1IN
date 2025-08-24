@@ -15,11 +15,11 @@ Grâce aux nombres, les ordinateurs stockent des dessins, des photos et d’autr
 On distingue deux types d’images numériques:
 \begin{enumerate}[a)]
 \item {\bf L'image matricielle (ou bitmap)}:
-Elle est composée de points appelés pixels que l’on voit pas à l'œil nu. Lors de l’agrandissement l’image peut devenir floue car les pixels ressortent ( les carrés sur l’écran).
+Elle est composée de points appelés pixels que l’on ne voit pas à l'œil nu. Lors de l’agrandissement, l’image peut devenir floue, car les pixels ressortent ( les carrés sur l’écran).
 \item {\bf L'image vectorielle}:
 Elle est composée de lignes et de segments qui sont liés entre eux par des formules mathématiques. Grâce à la vectorisation, chaque élément a une place définie qui empêche la déformation de l’image. Au lieu de mémoriser une mosaïque de points élémentaires, on stocke la succession d’opérations conduisant au tracé.
 
-L’usage de ce type d’image concerne les schémas générés par certains logiciels de DAO(Dessin assisté par ordinateur) ou pour les animations Flash utilisées sur internet pour la création de bannières publicitaires.
+L’usage de ce type d’image concerne les schémas générés par certains logiciels de DAO (Dessin assisté par ordinateur) ou pour les animations Flash utilisées sur internet pour la création de bannières publicitaires.
 
 \end{enumerate}
 
@@ -33,7 +33,7 @@ L’usage de ce type d’image concerne les schémas générés par certains log
 
 \begin{remarque}
 
-Il n’est pas possible de tout vectoriser car les photos et les dégradés de couleurs ne se vectorisent pas. En effet, la vectorisation aplatit les couleurs et élimine des dégradés.
+Il n’est pas possible de tout vectoriser, car les photos et les dégradés de couleurs ne se vectorisent pas. En effet, la vectorisation aplatit les couleurs et élimine des dégradés.
 
 \end{remarque}
 
@@ -71,7 +71,7 @@ $$hauteur = 768 / 300 = 2,56 pouces (6,5 cm)$$
 Les écrans d’ordinateur sont divisés en une grille de petits points appelés pixels (picture elements, qui signifie éléments d’image)
 \end{defi}
 
-Chaque pixel de l'image est codé soit par un 0, représentant un point noir ou un 1, représentant un point blanc. Donc un bit permet de coder un pixel d’une image en noir et blanc. 
+Chaque pixel de l'image est codé soit par un 0, représentant un point noir ou un 1, représentant un point blanc. Donc, un bit permet de coder un pixel d’une image en noir et blanc. 
 
 Pour stocker une image en noir et blanc, il suffit de convertir le noir par 0 et le blanc par 1. 
 
@@ -139,7 +139,7 @@ Une autre façon consiste à indiquer pour chaque ligne le nombre de points blan
 L’image de la lettre “a” nous montre comment une image peut être représentée par des nombres. Le premier nombre représente toujours le nombre de pixels blancs. Si le premier pixel est noir, la ligne commencera par un 0.
 \begin{enumerate}[a)]
 \item La première ligne est représentée par 1, 3, 1.
-\item La première ligne contient 1 pixel blanc, 3 noirs puis 1 blanc. 
+\item La première ligne contient 1 pixel blanc, 3 noirs, puis 1 blanc. 
 \item La quatrième ligne est représentée par 0, 1, 3, 1.
 \end{enumerate}
 
@@ -213,7 +213,7 @@ Ce dernier correspond à une certaine couleur.
 
 Pour une image en 16 niveaux de gris, il faut que chaque point de l’image soit codé par un nombre en 4 bits.
 
-Si chaque point est codé sur 8 bits l’image peut contenir 256 niveaux de gris différents. Si l'on souhaite que l'image contient plus de couleurs, on pourra utiliser plus de bits pour chaque pixel.
+Si chaque point est codé sur 8 bits, l’image peut contenir 256 niveaux de gris différents. Si l'on souhaite que l'image contienne plus de couleurs, on pourra utiliser plus de bits pour chaque pixel.
 
 
 \begin{center}
@@ -353,9 +353,9 @@ La taille (poids) de l’image augmente en augmentant le nombre de nuances de co
 \end{remarque}
 
 
-Une technique consistent à réduire l’information nécessaire pour représenter une image ou un son.
+Une technique consiste à réduire l’information nécessaire pour représenter une image ou un son.
 
-Pour pallier les inconvénients des images trop lourdes en particulier lors du stockage ou de la transmission et publication sur le web.
+Pour pallier les inconvénients des images trop lourdes, en particulier lors du stockage ou de la transmission et publication sur le web.
 
 Ce qui permet de réduire les exigences quant à l’espace disponible sur le disque ainsi que les coûts de communications lorsque l’image ou le son sont téléchargés.
 
@@ -384,7 +384,7 @@ couleurs au choix. Bien adapté aux photos.
 \section{Représentation du son}
 \subsubsection{Échantillonage}
 
-Un son est un signal physique qui correspond à la pression de l'air au cours du temps. C'est ces variations de pressions que captent nos oreilles. Une fois enregistré, ce son peut-être encodé de manière similaire aux images : on sélectionne une valeur à intervalles de temps régulières et on encode chacune de ces valeurs en binaire. Cela revient à "pixeliser" le son.
+Un son est un signal physique qui correspond à la pression de l'air au cours du temps. C'est ces variations de pressions que captent nos oreilles. Une fois enregistré, ce son peut-être encodé de manière similaire aux images : on sélectionne une valeur à intervalles de temps réguliers et on encode chacune de ces valeurs en binaire. Cela revient à "pixeliser" le son.
 
 
 \begin{center}
@@ -399,9 +399,9 @@ Ce processus est nommé l'échantillonnage et on échantillonne en général les
 \begin{enumerate}
 \item Cette technique est celle utilisée dans certains formats de sons "bruts" comme le RAW ou WAV. 
 
-\item D'autres formats comme le MP3, compressent encore ces informations, comme le fait le JPG pour les images.
+\item D'autres formats, comme le MP3, compressent encore ces informations, comme le fait le JPG pour les images.
 
-\item D'autres formats, comme le MIDI, n'utilise pas cette méthode et font le choix de noter directement l'équivalent des notes de musique et des instruments sur lesquels elles sont jouées. Ce format est adapté aux musiques composées sur synthétiseurs, mais pas aux sons enregistrés dans la nature.
+\item D'autres formats, comme le MIDI, n'utilisent pas cette méthode et font le choix de noter directement l'équivalent des notes de musique et des instruments sur lesquels elles sont jouées. Ce format est adapté aux musiques composées sur synthétiseurs, mais pas aux sons enregistrés dans la nature.
 
 \end{enumerate}
 
@@ -488,7 +488,7 @@ Combien d’octets occupe une image de 200 x 300 pixels en noir et blanc?
 \item 
     Combien d'octets occupe une image de 300 x 500 pixels en niveau de gris codé sur 8 bits ?
       \item
-        Même question mais si on a une en couleur pour laquelle chaque couleur est codé en RVB sur 24 bits
+        Même question, mais si on a une en couleur pour laquelle chaque couleur est codée en RVB sur 24 bits
 \end{enumerate}
 
 \end{exercice}
@@ -502,7 +502,7 @@ Combien d’octets occupe une image de 200 x 300 pixels en noir et blanc?
 
     \item Quel est d'après vous le code RGB du violet foncé ? %160-0-160
 
-    \item Quel est d'après vous la couleur correspondant au code RGB suivant : (255, 128, 0) ? % orange
+    \item Quelle est d'après vous la couleur correspondant au code RGB suivant : (255, 128, 0) ? % orange
 \end{enumerate}
 \end{exercice}
 

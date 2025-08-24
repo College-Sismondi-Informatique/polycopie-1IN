@@ -10,7 +10,7 @@
 
 Aujourd’hui, nous utilisons des ordinateurs, des téléphones mobiles, des tablettes pour écrire, regarder des vidéos, écouter de la musique ou jouer à des jeux. Mais comment une machine peut-elle comprendre autant de choses différentes ?
 
-Lorsque nous utilisons un logiciel, chaque action que nous effectuons avec la souris ou le clavier par exemple est traduite en langage informatique puis exécutée par l’ordinateur. 
+Lorsque nous utilisons un logiciel, chaque action que nous effectuons avec la souris ou le clavier, par exemple, est traduite en langage informatique, puis exécutée par l’ordinateur. 
 
 {\it “Transmettre des informations sous forme numérique suppose entre autres d'optimiser la taille des messages transmis pour éviter de surcharger les canaux de transmission, d'être capable de rectifier des erreurs apparues en cours de transmission, de crypter les contenus et d'authentifier les émissaires et les destinataires…” }(Dunod, 2006)
 
@@ -67,7 +67,7 @@ Comptons en binaire pour voir comment ça fonctionne.
 \text{Binaire} & 0 & 1 & 10 & 11 & 100 & 101 & 110 & 111 & 1000 & 1001 & 1010 \\
 \end{array}
 \]
-Entrons dans le détail pour comprendre comment convertir des nombres binaires et nombres décimaux et inversement.
+Entrons dans le détail pour comprendre comment convertir des nombres binaires et des nombres décimaux et inversement.
 \subsubsection{Conversion binaire décimale}
 
 Une méthode pour obtenir le nombre en base 10, connaissant son écriture en base 2, est d'établir la valeur de chaque chiffre du nombre: celui le plus à droite représente 1, le deuxième représente 2, le troisième représente $2^2=4$, le quatrième représente $2^3=8$, etc. comme dans la grille ci-dessous :  
@@ -86,7 +86,7 @@ Une méthode pour obtenir le nombre en base 10, connaissant son écriture en bas
 \end{tikzpicture}
 \end{center} 
 
-Par exemple si nous voulons connaître la valeur décimale du nombre 10110, nous établissons d'abord une grille avec les différentes puissances de 2; ensuite, nous plaçons le nombre en binaire sous cette grille en mettant bien le chiffre des unités sous le carré le plus à droite:
+Par exemple, si nous voulons connaître la valeur décimale du nombre 10110, nous établissons d'abord une grille avec les différentes puissances de 2; ensuite, nous plaçons le nombre en binaire sous cette grille en mettant bien le chiffre des unités sous le carré le plus à droite:
 
 \begin{center}
 
@@ -207,7 +207,7 @@ Donc $99_{(10)}=1100011_{(2)}$.
 
 \;
 
-La deuxième méthode consiste  effectuer des divisions successives par 2. Le nombre en binaire se lira à l'aide des restes des différentes divisions:
+La deuxième méthode consiste  à effectuer des divisions successives par 2. Le nombre en binaire se lira à l'aide des restes des différentes divisions:
 
 \begin{figure}[h]
 \begin{center}
@@ -292,7 +292,7 @@ La méthode par division (par 16) s'applique comme en binaire (par 2).
 
 \subsection{Opération sur les nombres en binaires}
 
-Tout comme pour l'addition en colonne, pour additionner deux nombres écrits en binaires il faut les additionner bit à bit. 
+Tout comme pour l'addition en colonne, pour additionner deux nombres écrits en binaires, il faut les additionner bit à bit. 
 
 \begin{exercice}
 Quel est le résultat des calculs binaires suivants:
@@ -625,14 +625,14 @@ Nous donnons trois nombres binaires:
 \section{Les codes de caractères}
 
 \subsection{La table ASCII}
-Le binaire permet de coder les nombres que les systèmes informatiques peuvent manipuler. Cependant, l'ordinateur doit aussi utiliser des caractères alphanumériques pour mémoriser et transmettre des textes par exemple de l’ordinateur vers l’imprimante, d’un automate programmable vers un terminal, d’un clavier vers un processeur, etc. 
+Le binaire permet de coder les nombres que les systèmes informatiques peuvent manipuler. Cependant, l'ordinateur doit aussi utiliser des caractères alphanumériques pour mémoriser et transmettre des textes, par exemple de l’ordinateur vers l’imprimante, d’un automate programmable vers un terminal, d’un clavier vers un processeur, etc. 
 \begin{center}
 \begin{figure}[h!]
 \centerline{\includegraphics[width=18cm]{images/ASCII2}}
 \end{figure}
 \end{center}
 
-Le code {\bf ASCII} (American Standard Code for Information Interchange) représente les caractères sur 7 bits (c'est-à-dire 128 caractères possibles, de 0 à 127). Les codes 0 à 31 ne sont pas des caractères. On les appelle caractères de contrôle car ils permettent de faire des actions telles que : retour à la ligne (CR). Bip sonore (BEL). Les codes 65 à 90 représentent les majuscules. Les codes 97 à 122 représentent les minuscules. Le caractère A par exemple à pour code 65 soit 01000001 en binaire. 
+Le code {\bf ASCII} (American Standard Code for Information Interchange) représente les caractères sur 7 bits (c'est-à-dire 128 caractères possibles, de 0 à 127). Les codes 0 à 31 ne sont pas des caractères. On les appelle caractères de contrôle, car ils permettent de faire des actions telles que : retour à la ligne (CR). Bip sonore (BEL). Les codes 65 à 90 représentent les majuscules. Les codes 97 à 122 représentent les minuscules. Le caractère A par exemple à pour code 65 soit 01000001 en binaire. 
 
 
 Par exemple: 
@@ -642,7 +642,7 @@ Par exemple:
 \item Le chiffre 2 : 50
 \end{enumerate}
 
-Le code ASCII a été mis au point pour la langue anglaise, il ne contient donc pas de caractères accentués, ni de caractères spécifiques à une langue. Le code ASCII a donc été étendu à 8 bits pour pouvoir coder plus de caractères (on parle d'ailleurs de code \textbf{ASCII étendu}...)
+Le code ASCII a été mis au point pour la langue anglaise, il ne contient donc pas de caractères accentués ni de caractères spécifiques à une langue. Le code ASCII a donc été étendu à 8 bits pour pouvoir coder plus de caractères (on parle d'ailleurs de code \textbf{ASCII étendu}...)
 
 \subsection{Unicode}
 
