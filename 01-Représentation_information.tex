@@ -328,6 +328,10 @@ Pour cela, compléter l'addition en colonne suivante:
 
 \vskip+1cm
 
+\begin{aretenir}
+Toujours être attentif à la base: $1_{(2)} + 1_{(2)} = 10_{(2)} \qquad \text{alors que} \qquad  1_{(10)} + 1_{(10)} = 2_{(10)}$
+\end{aretenir}
+
 \begin{exercice}
 Effectuer les additions binaires suivantes:
 \begin{multicols}{2}
@@ -463,11 +467,11 @@ Par exemple, si l'on utilise un octet, chaque nombre occupe exactement
 
 En représentation non signée sur 8 bits, le plus petit nombre est
 \[
-    \texttt{00000000}_2=0
+      00000000_{(2)} = 0
 \]
 et le plus grand est
 \[
-    \texttt{11111111}_2=255.
+    11111111_{(2)} = 255
 \]
 \end{remarque}
 
@@ -530,16 +534,16 @@ indiquer le signe du nombre. Ce bit est appelé le \textbf{bit de signe} :
 
 Dans cet exemple, la valeur absolue $80$ est représentée par
 \[
-    \texttt{1010000}_2.
+    1010000_{(2)}.
 \]
 
 On ajoute ensuite le bit de signe :
 
 \[
-\begin{array}{rcl}
-\texttt{01010000}_2 &=& +80,\\
-\texttt{11010000}_2 &=& -80.
-\end{array}
+01010000_{(2)} = +80
+\]
+\[
+11010000_{(2)} = -80
 \]
 
 Sur 8 bits, un bit est réservé au signe et les 7 autres bits servent à coder
