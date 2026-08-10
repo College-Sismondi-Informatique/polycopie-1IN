@@ -10,11 +10,15 @@
 
 Aujourd’hui, nous utilisons des ordinateurs, des téléphones mobiles, des tablettes pour écrire, regarder des vidéos, écouter de la musique ou jouer à des jeux. Mais comment une machine peut-elle comprendre autant de choses différentes ?
 
-Lorsque nous utilisons un logiciel, chaque action que nous effectuons avec la souris ou le clavier, par exemple, est traduite en langage informatique, puis exécutée par l’ordinateur. 
+Lorsque nous utilisons un logiciel, chacune de nos actions, réalisée par exemple avec la souris ou le clavier, est traduite en langage informatique avant d'être exécutée par l'ordinateur. 
 
-{\it “Transmettre des informations sous forme numérique suppose entre autres d'optimiser la taille des messages transmis pour éviter de surcharger les canaux de transmission, d'être capable de rectifier des erreurs apparues en cours de transmission, de crypter les contenus et d'authentifier les émissaires et les destinataires…” }(Dunod, 2006)
+\begin{quotation}
+\itshape “Transmettre des informations sous forme numérique suppose entre autres d'optimiser la taille des messages transmis pour éviter de surcharger les canaux de transmission, d'être capable de rectifier des erreurs apparues en cours de transmission, de crypter les contenus et d'authentifier les émissaires et les destinataires…”
+\raggedleft
+(Dunod, 2006)
+\end{quotation}
 
-Les images, le son, le texte et les vidéos sont des informations qu’un ordinateur peut traiter. Un ordinateur est composé de circuits électroniques qui fonctionnent à l'électricité. L’information est représentée physiquement par un\textbf{ signal électrique ou magnétique qui, au-delà d'un certain seuil, correspond à la valeur 1 si non par 0}. Par conséquent, l’information est toujours sous forme d’un ensemble de nombres écrit en \textbf{base 2 par exemple 011001.}
+Les images, les sons, les textes et les vidéos sont autant d'informations qu'un ordinateur peut traiter. Un ordinateur est constitué de circuits électroniques qui manipulent des signaux électriques. À l'intérieur de ces circuits, l'information est représentée par deux états physiques distincts, interprétés conventionnellement comme 0 et 1. Sur certains supports de stockage, ces états peuvent également être représentés de manière magnétique. Toutes les informations manipulées par un ordinateur sont finalement représentées sous la forme d'une suite de bits écrits en base 2, par exemple :\textbf{011001}.
 
 \begin{figure}[h]
 \begin{center}
@@ -22,14 +26,16 @@ Les images, le son, le texte et les vidéos sont des informations qu’un ordina
 \end{center}
 \end{figure}
 
+\begin{history}
 En 1939, Claude Shannon a été le premier à faire un parallèle entre l'algèbre booléenne (une algèbre binaire, n'acceptant que vrai et faux comme valeurs, et trois fonctions logiques “Et (*), Ou(+), Non(-)”) et le fonctionnement des circuits électriques. Le vrai/faux se transforme en 1 : le courant passe, 0 : il ne passe pas. C'est Shannon qui popularise le terme de bit:
+\end{history}
 
-\begin{defi}
+\begin{definition}
 Le terme {\bf bit} (b minuscule dans les notations) signifie {\it binary digit }, c'est-à-dire 0 ou 1 en numérotation binaire. Il s'agit de la plus petite unité d'information manipulable par une machine numérique. 
 
 
-L'{\bf octet} (en anglais {\bf byte} ou B majuscule dans les notations) est une unité d'information composée de 8 bits. Il permet par exemple de stocker un caractère comme une lettre ou un chiffre.
-\end{defi}
+L'{\bf octet} (en anglais {\bf byte} ou B majuscule dans les notations) est une unité d'information composée de 8 bits. Il permet notamment de représenter un caractère, comme une lettre, un chiffre ou un symbole.
+\end{definition}
 
 D'autres termes sont aussi utilisés pour définir certaines longueurs de nombre:
 \begin{itemize}
@@ -38,14 +44,16 @@ D'autres termes sont aussi utilisés pour définir certaines longueurs de nombre
 
 \item Une unité d'information de 32 bits de longueur est appelée {\bf mot double} (en anglais {\bf double word}, d'où l'appellation dword).
 \end{itemize}
-
+\begin{aretenir}
+Toute information traitée par un ordinateur est finalement représentée sous la forme d'une suite de bits (0 et 1).
+\end{aretenir}
 
 \section{Les bases décimales, binaires et hexadécimales}
 
 
 \subsection{La base décimale}
 
-Le système décimal (base 10) est celui que nous utilisons dans la vie quotidienne parce que nous avons commencé à compter avec nos doigts. Il comporte 10 symboles de 0 à 9. C'est un système positionnel, c'est-à-dire que l'endroit où se trouve le symbole définit sa valeur.
+Le système décimal (base 10) est celui que nous utilisons dans la vie quotidienne historiquement liée au fait que l'être humain compte avec ses dix doigts. Il comporte 10 symboles de 0 à 9. C'est un système positionnel, c'est-à-dire que l'endroit où se trouve le symbole définit sa valeur.
 
 Par exemple: $(9'875)_{(10)}=9 \cdot 10^3 + 8 \cdot 10^2 + 7\cdot 10^1 + 5 \cdot 10^0$
 
@@ -53,7 +61,7 @@ Par exemple: $(9'875)_{(10)}=9 \cdot 10^3 + 8 \cdot 10^2 + 7\cdot 10^1 + 5 \cdot
 
 \subsection{Binaire}
 
-Dans les domaines de l'automatisme, de l'électronique et de l'informatique, nous utilisons la base 2. Tous les nombres s'écrivent avec deux chiffres uniquement, 0 et 1.  Car l'algèbre booléenne est à la base de l'électronique numérique. Par exemple, un interrupteur est ouvert ou fermé, une diode électroluminescente (ou LED en anglais) est allumée ou éteinte,  une tension est présente ou absente, un champ magnétique est orienté Nord-Sud ou Sud-Nord.
+Dans les domaines de l'automatisme, de l'électronique et de l'informatique, nous utilisons la base 2. Tous les nombres sont représentés uniquement à l'aide des chiffres 0 et 1.  Car l'algèbre booléenne est à la base de l'électronique numérique. Par exemple, un interrupteur est ouvert ou fermé, une diode électroluminescente (ou LED en anglais) est allumée ou éteinte,  une tension est présente ou absente, un champ magnétique est orienté Nord-Sud ou Sud-Nord.
 
 Le chiffre binaire, qui peut prendre ces deux états, est nommé {\bf bit} (binary digit). Les règles sont les mêmes que pour le décimal. 
 
@@ -61,12 +69,19 @@ Par exemple, $1101_{(2)}=1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1\cdot 2^0=13
 
 \subsubsection{Compter en binaire}
 Comptons en binaire pour voir comment ça fonctionne.
-\[
-\begin{array}{cccccccccccc}
-\text{Décimal} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
-\text{Binaire} & 0 & 1 & 10 & 11 & 100 & 101 & 110 & 111 & 1000 & 1001 & 1010 \\
-\end{array}
-\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l*{11}{c}}
+
+\textbf{Décimal} & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+\cmidrule(lr){1-12}
+\rowcolor{gray!10}
+\textbf{Binaire} & 0 & 1 & 10 & 11 & 100 & 101 & 110 & 111 & 1000 & 1001 & 1010 \\
+
+\end{tabular}
+\end{center}
+
 Entrons dans le détail pour comprendre comment convertir des nombres binaires et des nombres décimaux et inversement.
 \subsubsection{Conversion binaire décimale}
 
@@ -89,31 +104,32 @@ Une méthode pour obtenir le nombre en base 10, connaissant son écriture en bas
 Par exemple, si nous voulons connaître la valeur décimale du nombre 10110, nous établissons d'abord une grille avec les différentes puissances de 2; ensuite, nous plaçons le nombre en binaire sous cette grille en mettant bien le chiffre des unités sous le carré le plus à droite:
 
 \begin{center}
+\begin{tikzpicture}[font=\small]
+\def\cell{1}
 
-\begin{tikzpicture}
-	\draw (-1,1) rectangle (0,0) rectangle (1,1) rectangle (2,0) rectangle (3,1) rectangle (4,0) rectangle (5,1) rectangle (6,0);
-	\draw (5.5,0.5) node {$1$};
-	\draw (4.5,0.5) node {$2$};
-	\draw (3.5,0.5) node {$4$};
-	\draw (2.5,0.5) node {$8$};
-	\draw (1.5,0.5) node {$16$};
-	\draw (0.5,0.5) node {$32$};
-	\draw (-.5,0.5) node {$64$};
-	
-	\draw (5.5,-0.5) node {$0$};
-	\draw (4.5,-0.5) node {$1$};
-	\draw (3.5,-0.5) node {$1$};
-	\draw (2.5,-0.5) node {$0$};
-	\draw (1.5,-0.5) node {$1$};
-	\draw (0.5,-0.5) node {$ $};
-	\draw (-.5,-0.5) node {$ $};
-	
-%	\draw (-1,0) -- (0,1)
-%				(0,0) -- (1,1)
-%				(2,0) -- (3,1)
-%				(5,0) -- (6,1);
-	\draw (-1,-1) rectangle (0,0) rectangle (1,-1) rectangle (2,0) rectangle (3,-1) rectangle (4,0) rectangle (5,-1) rectangle (6,0);
-	
+% Grille
+\draw[line width=0.4pt] (0,0) grid (7,2);
+
+% Cases actives
+\foreach \x in {2,4,5}
+{
+    \fill[gray!15] (\x,0) rectangle ++(1,1);
+}
+
+% Valeurs
+\foreach \x/\val in {
+0/64,1/32,2/16,3/8,4/4,5/2,6/1}
+{
+    \node at (\x+0.5,1.5) {\val};
+}
+
+% Bits
+\foreach \x/\bit in {
+0/{},1/{},2/1,3/0,4/1,5/1,6/0}
+{
+    \node[font=\ttfamily] at (\x+0.5,0.5) {\bit};
+}
+
 \end{tikzpicture}
 \end{center}
 
@@ -390,234 +406,603 @@ Effectuer les additions binaires suivantes:
 
 \section{Représentation des nombres entiers relatifs signés}
 
-{\it Rappel: Les nombres entiers naturels sont l'ensemble des nombres entiers et positifs. Il est désigné par la lettre $\mathbf{N}=\{0,1,2,\ldots\}$.
+\textit{Rappel :}
+\begin{itemize}
+    \item Les \textbf{nombres entiers naturels} sont les nombres entiers positifs ou nuls :
+    \[
+        \mathbb{N}=\{0,1,2,3,\ldots\}
+    \]
 
-Les nombres entiers  sont l'ensemble des nombres entiers négatifs et positifs. Il est désigné par la lettre $\mathbf{Z}=\{\ldots,-2,-1.0,1,2,\ldots\}$.}
+    \item Les \textbf{nombres entiers relatifs} regroupent les nombres entiers
+    négatifs, le nombre zéro et les nombres entiers positifs :
+    \[
+        \mathbb{Z}=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}
+    \]
+\end{itemize}
 
-\ 
+Jusqu'à présent, nous avons appris à représenter en binaire des nombres
+entiers naturels. Pourtant, de nombreuses situations nécessitent également
+des nombres négatifs : une température de $-8\,^\circ$C, un solde bancaire
+de $-150$ CHF ou une altitude située sous le niveau de la mer.
 
-Nous arrivons maintenant à écrire tous les nombres entiers naturels en binaire. 
+Un ordinateur doit donc être capable de représenter aussi bien les nombres
+positifs que les nombres négatifs.
 
 \begin{remarque}
+Contrairement aux mathématiques, un ordinateur dispose d'une quantité de
+mémoire limitée. Chaque nombre doit donc être représenté sur un
+\textbf{nombre de bits fixé à l'avance}.
 
-Dans la pratique, nous avons besoin de savoir quelle taille fait chaque nombre, i.e. sur combien de bits, il est codé. On peut par exemple décider que les nombres sont codés sur un octet (8 bits): le plus petit nombre sera 00000000 = 0 et le plus grand sera 11111111=255.
+Par exemple, si l'on utilise un octet, chaque nombre occupe exactement
+8 bits :
+
+\begin{center}
+\begin{tikzpicture}[
+    bit/.style={
+        draw=black!65,
+        line width=0.35pt,
+        minimum width=0.75cm,
+        minimum height=0.75cm,
+        inner sep=0pt,
+        font=\ttfamily
+    }
+]
+    \foreach \x/\b in {
+        0/0,1/1,2/0,3/1,4/1,5/0,6/0,7/1
+    }{
+        \node[bit] at (\x*0.75,0) {\b};
+    }
+
+    \draw[decorate,
+          decoration={brace,amplitude=5pt,mirror}]
+          (-0.375,-0.5) -- (5.625,-0.5)
+          node[midway,below=6pt]{8 bits = 1 octet};
+\end{tikzpicture}
+\end{center}
+
+En représentation non signée sur 8 bits, le plus petit nombre est
+\[
+    \texttt{00000000}_2=0
+\]
+et le plus grand est
+\[
+    \texttt{11111111}_2=255.
+\]
 \end{remarque}
 
-{\bf Problème:} En faisant ainsi, nous ne pouvons pas représenter des nombres négatifs.
-
-\ 
-
-Il faut donc utiliser un certain nombre de règles en fonction du type de nombres que l'on veut représenter avec un ordinateur: nombres entiers, nombres relatifs, nombres rationnels...
-
-
-
-
+\textbf{Problème :} cette représentation ne permet pas d'écrire des nombres
+négatifs. Il faut donc définir une convention indiquant comment interpréter
+les bits.
 
 \subsection{Représentation signe-magnitude}
 
-Une première façon pour représenter les nombres négatifs est de décider que le bit le plus gauche représente le signe du nombre.
+Une première idée consiste à réserver le bit situé tout à gauche pour
+indiquer le signe du nombre. Ce bit est appelé le \textbf{bit de signe} :
 
-\begin{figure}[h]
+\begin{itemize}
+    \item un bit de signe égal à \texttt{0} indique un nombre positif ou nul ;
+    \item un bit de signe égal à \texttt{1} indique un nombre négatif ;
+    \item les autres bits indiquent la valeur absolue du nombre.
+\end{itemize}
+
 \begin{center}
-\includegraphics[scale=.5]{images/nombresigne}
+\begin{tikzpicture}[
+    bit/.style={
+        draw=black!65,
+        line width=0.35pt,
+        minimum width=0.8cm,
+        minimum height=0.8cm,
+        inner sep=0pt,
+        font=\ttfamily
+    }
+]
+    % Première ligne
+    \node[bit,fill=gray!20] at (0,0.6) {0};
+    \foreach \x/\b in {
+        1/1,2/0,3/1,4/0,5/0,6/0,7/0
+    }{
+        \node[bit] at (\x*0.8,0.6) {\b};
+    }
+    \node[anchor=east,font=\bfseries] at (-0.65,0.6) {${}+80$ :};
+
+    % Deuxième ligne
+    \node[bit,fill=gray!20] at (0,-0.6) {1};
+    \foreach \x/\b in {
+        1/1,2/0,3/1,4/0,5/0,6/0,7/0
+    }{
+        \node[bit] at (\x*0.8,-0.6) {\b};
+    }
+    \node[anchor=east,font=\bfseries] at (-0.65,-0.6) {$-80$ :};
+
+    % Légendes
+    \draw[decorate,
+          decoration={brace,amplitude=5pt}]
+          (-0.4,1.2) -- (0.4,1.2)
+          node[midway,above=6pt]{\small signe};
+
+    \draw[decorate,
+          decoration={brace,amplitude=5pt}]
+          (0.4,1.2) -- (6.0,1.2)
+          node[midway,above=6pt]{\small valeur absolue (magnitude)};
+\end{tikzpicture}
 \end{center}
-\end{figure}
 
-Sur 8 bits, le plus grand nombre représentable sera 01111111=127 et le plus petit sera 111111111=-127.
+Dans cet exemple, la valeur absolue $80$ est représentée par
+\[
+    \texttt{1010000}_2.
+\]
 
-\ 
+On ajoute ensuite le bit de signe :
 
-Il est possible d'additionner deux nombres pour autant qu'ils soient tous les deux positifs et que le résultat ne dépasse pas le nombre plus grand nombre pouvant être écrit:
+\[
+\begin{array}{rcl}
+\texttt{01010000}_2 &=& +80,\\
+\texttt{11010000}_2 &=& -80.
+\end{array}
+\]
 
+Sur 8 bits, un bit est réservé au signe et les 7 autres bits servent à coder
+la valeur absolue. On peut donc représenter les nombres compris entre
+$-127$ et $+127$ :
+
+\[
+    -127 \leqslant x \leqslant 127.
+\]
+
+Le plus grand nombre positif est
+
+\[
+    \texttt{01111111}_2=+127,
+\]
+
+et le plus petit nombre négatif est
+
+\[
+    \texttt{11111111}_2=-127.
+\]
+
+\subsubsection{Limites de la représentation signe-magnitude}
+
+Cette méthode est simple à comprendre, mais elle présente deux problèmes
+importants.
+
+\paragraph{Premier problème : deux représentations du zéro}
+
+\[
+\begin{array}{rcl}
+\texttt{00000000} &=& +0,\\
+\texttt{10000000} &=& -0.
+\end{array}
+\]
+
+Il existe donc deux suites de bits différentes pour représenter le même
+nombre.
+
+\paragraph{Deuxième problème : les additions sont compliquées}
+
+Considérons les représentations signe-magnitude de $+5$ et de $-5$ :
+
+\[
+\begin{array}{rcl}
++5 &=& \texttt{00000101},\\
+-5 &=& \texttt{10000101}.
+\end{array}
+\]
+
+Une addition binaire ordinaire donne :
+
+\[
+\begin{array}{r@{\;}*{8}{c}}
+  & 0&0&0&0&0&1&0&1\\
++ & 1&0&0&0&0&1&0&1\\
+\hline
+  & 1&0&0&0&1&0&1&0
+\end{array}
+\]
+
+Le résultat obtenu n'est pas zéro. Il faudrait donc construire des circuits
+capables de traiter séparément le signe et la valeur absolue.
+
+Autres exemples:
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=.5]{images/Operationsigne}
 \end{center}
 \end{figure}
 
-Le résultat de 104 + 30=134 amène un dépassement de capacité. Le nombre entier signé maximum sur 8 bits est 127.
+Pour éviter ces difficultés, les ordinateurs utilisent généralement une
+autre représentation : le \textbf{complément à deux}.
 
+\subsection{Représentation en complément à deux}
 
-\ 
+\subsubsection{Principe}
 
-{\bf Problème:} Bien que pratique, cette façon de coder les nombres négatifs présente deux problèmes:
-\begin{enumerate}
-\item zéro est représenté de deux façons différentes: 1000000 et 00000000.
-\item si on additionne deux nombres opposés, nous n'obtenons pas 0. 
-\end{enumerate}
+Le complément à deux est la méthode habituellement utilisée pour représenter
+les nombres entiers relatifs dans un ordinateur.
 
-\subsection{*Représentation des nombres en complément à deux}
-\subsubsection{Principe du complément à deux}
-Cette représentation résout les problèmes de la représentation signée.
+Avec cette représentation :
 
-Avec le complément à deux :  
 \begin{itemize}
-  \item les \textbf{nombres positifs} sont représentés normalement (comme en binaire usuel),  
-  \item les \textbf{nombres négatifs} sont représentés d’une manière spéciale qui rend les calculs plus simples.  
+    \item les nombres positifs et le nombre zéro sont écrits normalement en
+    binaire ;
+    \item les nombres négatifs sont codés selon une règle particulière ;
+    \item le nombre zéro ne possède qu'une seule représentation ;
+    \item les additions peuvent être réalisées avec le même circuit, que les
+    nombres soient positifs ou négatifs.
 \end{itemize}
 
-Avec $n$ bits, on peut coder :  
+Sur $n$ bits, le complément à deux permet de représenter les nombres compris
+entre
+
 \[
--2^{n-1} \quad \text{à} \quad 2^{n-1}-1
+    -2^{n-1}
+    \qquad\text{et}\qquad
+    2^{n-1}-1.
 \]
 
-\subsubsection{Comment écrire un nombre négatif ?}
+Par exemple, sur 8 bits :
 
-Pour trouver le complément à deux d’un nombre négatif, on procède en trois étapes :
+\[
+    -2^7 \leqslant x \leqslant 2^7-1,
+\]
+
+c'est-à-dire
+
+\[
+    -128 \leqslant x \leqslant 127.
+\]
+
+\subsubsection{Comment représenter un nombre négatif ?}
+
+Pour écrire un nombre négatif en complément à deux, on applique trois étapes :
 
 \begin{enumerate}
-  \item On écrit la valeur positive en binaire, sur le nombre de bits choisi. Par exemple, nous aimerions écrire le nombre -80. il faut donc commencer par coder le nombre +80
-  
-  $+80$ sur 8 bits : 
-  \[
-  01010000
-  \]
+    \item écrire sa valeur positive en binaire sur le nombre de bits choisi ;
+    \item inverser tous les bits : les \texttt{0} deviennent des \texttt{1}
+    et les \texttt{1} deviennent des \texttt{0} ;
+    \item ajouter \texttt{1} au résultat.
+\end{enumerate}
 
-  \item On inverse tous les bits (les 0 deviennent 1 et les 1 deviennent 0).  
-  Résultat : 
-  \[
-  10101111
-  \]
+Prenons comme exemple la représentation de $-80$ sur 8 bits.
 
-  \item On ajoute $1$ à ce résultat :  
+\begin{center}
+\begin{tikzpicture}[
+    étape/.style={
+        rounded corners,
+        draw=black!65,
+        line width=0.4pt,
+        fill=gray!7,
+        minimum width=5.2cm,
+        minimum height=1.1cm,
+        align=center
+    },
+    flèche/.style={
+        ->,
+        >=stealth,
+        line width=0.5pt
+    }
+]
+    \node[étape] (a) at (0,0)
+        {\textbf{1. Écrire $+80$ sur 8 bits}\\[2mm]
+         \texttt{01010000}};
 
-  \begin{center}
-\begin{tikzpicture}
-	\draw (0,0) node{$1$}
-				(0.5,0) node{$0$}
-				(1,0) node{$1$}
-				(1.5,0) node{$0$}
-				(2,0) node{$1$}
-				(2.5,0) node{$1$}
-				(3,0) node{$1$}
-				(3.5,0) node{$1$};
-		\draw (-0.5,-.5) node{$+$}
-				
-				(3.5,-.5) node{$1$};
-				
-		
-				
-	\draw (-1,-.8) -- +(6,0);
-	
-	\draw  (0,-1.3) node{$1$}
-				(0.5,-1.3) node{$0$}
-				(1,-1.3) node{$1$}
-				(1.5,-1.3) node{$1$}
-				(2,-1.3) node{$0$}
-				(2.5,-1.3) node{$0$}
-				(3,-1.3) node{$0$}
-				(3.5,-1.3) node{$0$};
+    \node[étape] (b) at (0,-2)
+        {\textbf{2. Inverser tous les bits}\\[2mm]
+         \texttt{10101111}};
+
+    \node[étape] (c) at (0,-4)
+        {\textbf{3. Ajouter 1}\\[2mm]
+         \texttt{10110000}};
+
+    \draw[flèche] (a) -- (b);
+    \draw[flèche] (b) -- (c);
 \end{tikzpicture}
 \end{center}
 
-  Donc, $-80$ est représenté par \texttt{10110000}.
-\end{enumerate}
-
-\subsubsection{Vérification avec un calcul}
-
-Ce qui rend le complément à deux très pratique, c’est que les additions marchent normalement, même avec des négatifs.  
-
-Exemple : $80 + (-80) = 0$
+Ainsi, la représentation de $-80$ en complément à deux sur 8 bits est
 
 \[
-\begin{array}{ccccccccc}
-  & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 \\
-+ & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 \\ \hline
-  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    \boxed{\texttt{10110000}}.
+\]
+
+\begin{remarque}
+Pour obtenir l'opposé d'un nombre en complément à deux, on peut appliquer
+exactement la même procédure : inverser tous les bits, puis ajouter 1.
+
+Cette méthode permet donc de passer de $+80$ à $-80$, mais également de
+$-80$ à $+80$.
+\end{remarque}
+
+\subsubsection{Vérification par une addition}
+
+L'un des principaux avantages du complément à deux est que les additions
+binaires fonctionnent normalement, même lorsque l'un des nombres est
+négatif.
+
+Vérifions que
+
+\[
+    80+(-80)=0.
+\]
+
+Les deux nombres sont représentés sur 8 bits par
+
+\[
+\begin{array}{rcl}
++80 &=& \texttt{01010000},\\
+-80 &=& \texttt{10110000}.
 \end{array}
 \]
 
-En ne gardant que les 8 bits de droite, on obtient : 
-\[
-00000000 = 0
-\]
+Effectuons l'addition :
 
-\subsubsection{Exemples de valeurs}
-
-\textbf{Sur 4 bits :}  
 \[
-\begin{array}{ll}
-0111 = +7 & \quad 1111 = -1 \\
-1000 = -8 & \quad 0000 = 0 \\
+\begin{array}{r@{\;}*{9}{c}}
+  &   &0&1&0&1&0&0&0&0\\
++ &   &1&0&1&1&0&0&0&0\\
+\hline
+  & 1&0&0&0&0&0&0&0&0
 \end{array}
 \]
 
-\textbf{Sur 8 bits :}  
+Le calcul produit 9 bits :
+
 \[
-10000000 = -128 \qquad 01111111 = +127
+    \texttt{1 00000000}.
 \]
 
-\subsubsection{Résumé}
+Or les nombres sont codés sur seulement 8 bits. Le bit supplémentaire situé
+tout à gauche est donc ignoré. Il reste :
+
+\[
+    \texttt{00000000}=0.
+\]
+
+On obtient bien
+
+\[
+    80+(-80)=0.
+\]
+
+\subsubsection{Comment lire un nombre négatif ?}
+
+Dans une représentation en complément à deux, le bit situé tout à gauche
+permet de déterminer le signe :
 
 \begin{itemize}
-  \item Le complément à deux est la méthode standard utilisée par les ordinateurs pour représenter les nombres relatifs.  
-  \item Les positifs sont codés normalement.  
-  \item Les négatifs sont obtenus par \textbf{inversion des bits + ajout de 1}.  
-  \item Avec $n$ bits, on peut représenter tous les entiers de $-2^{n-1}$ à $2^{n-1}-1$.  
-  \item Les additions et soustractions fonctionnent de la même façon que pour les positifs, ce qui simplifie les circuits électroniques.  
+    \item s'il vaut \texttt{0}, le nombre est positif ou nul ;
+    \item s'il vaut \texttt{1}, le nombre est négatif.
 \end{itemize}
 
-\begin{exercice}
-En supposant que les nombres soient écrits sur 8 bits, vérifier que 5 + (-5) = 0.
-\end{exercice}
+Pour retrouver la valeur d'un nombre négatif, on applique de nouveau la
+procédure du complément à deux.
 
+Prenons le nombre
+
+\[
+    \texttt{11111011}.
+\]
+
+Son bit de gauche vaut \texttt{1} : le nombre est donc négatif.
+
+\begin{enumerate}
+    \item On inverse tous les bits :
+    \[
+        \texttt{00000100}.
+    \]
+
+    \item On ajoute 1 :
+    \[
+        \texttt{00000101}=5.
+    \]
+\end{enumerate}
+
+La suite de bits initiale représente donc
+
+\[
+    \texttt{11111011}=-5.
+\]
+
+\subsubsection{Quelques valeurs sur 4 bits}
+
+Sur 4 bits, on peut représenter les nombres compris entre
+
+\[
+    -2^3=-8
+    \qquad\text{et}\qquad
+    2^3-1=7.
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Binaire} & \textbf{Valeur décimale} & \textbf{Signe} \\
+\midrule
+\texttt{0000} & 0  & positif ou nul \\
+\texttt{0001} & 1  & positif \\
+\texttt{0010} & 2  & positif \\
+\texttt{0011} & 3  & positif \\
+\texttt{0100} & 4  & positif \\
+\texttt{0101} & 5  & positif \\
+\texttt{0110} & 6  & positif \\
+\texttt{0111} & 7  & positif \\
+\midrule
+\texttt{1000} & $-8$ & négatif \\
+\texttt{1001} & $-7$ & négatif \\
+\texttt{1010} & $-6$ & négatif \\
+\texttt{1011} & $-5$ & négatif \\
+\texttt{1100} & $-4$ & négatif \\
+\texttt{1101} & $-3$ & négatif \\
+\texttt{1110} & $-2$ & négatif \\
+\texttt{1111} & $-1$ & négatif \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+On remarque que :
+
+\[
+\begin{array}{rcl}
+\texttt{0111} &=& +7,\\
+\texttt{1000} &=& -8,\\
+\texttt{1111} &=& -1,\\
+\texttt{0000} &=& 0.
+\end{array}
+\]
+
+\begin{remarque}
+En complément à deux, il y a une valeur négative de plus que de valeurs
+strictement positives.
+
+Sur 8 bits, l'intervalle va de $-128$ à $+127$.
+\end{remarque}
+
+\subsection{Comparaison des représentations}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{lCCC}
+\toprule
+\textbf{Représentation}
+&
+\textbf{Deux zéros}
+&
+\textbf{Additions simples}
+&
+\textbf{Usage courant}
+\\
+\midrule
+Non signée
+&
+---
+&
+Oui
+&
+Pour les entiers naturels
+\\
+
+Signe-magnitude
+&
+Oui
+&
+Non
+&
+Rare
+\\
+
+Complément à deux
+&
+Non
+&
+Oui
+&
+Entiers relatifs
+\\
+\bottomrule
+\end{tabularx}
+\end{center}
 
 \subsection{Résumé}
 
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=.45]{images/tablerepresentation}
-\end{center}
-\end{figure}
+\begin{itemize}
+    \item Une suite de bits n'a pas de signification unique : son
+    interprétation dépend de la représentation choisie.
 
+    \item En représentation non signée sur $n$ bits, les valeurs vont de
+    $0$ à $2^n-1$.
 
-%\begin{exercice}
-%Utiliser un tableur pour faire une conversion d'une base à l'autre.
-%\end{exercice}
+    \item En représentation signe-magnitude, le bit de gauche indique le
+    signe et les autres bits représentent la valeur absolue.
 
+    \item La représentation signe-magnitude possède deux zéros et complique
+    les opérations arithmétiques.
+
+    \item Le complément à deux est la méthode habituellement utilisée par les
+    ordinateurs pour représenter les nombres entiers relatifs.
+
+    \item Pour écrire l'opposé d'un nombre en complément à deux, on inverse
+    tous les bits, puis on ajoute 1.
+
+    \item Sur $n$ bits, les valeurs en complément à deux vont de
+    $-2^{n-1}$ à $2^{n-1}-1$.
+\end{itemize}
 
 \begin{exercice}
-Donner la représentation signe-magnitude sur un octet des nombres suivants:
+En supposant que les nombres soient écrits sur 8 bits :
+
+\begin{enumerate}
+    \item écrire $+5$ en binaire ;
+    \item déterminer la représentation de $-5$ en complément à deux ;
+    \item effectuer l'addition $5+(-5)$ ;
+    \item expliquer pourquoi le résultat obtenu représente bien zéro.
+\end{enumerate}
+\end{exercice}
+
+\begin{exercice}
+Donner la représentation signe-magnitude sur un octet des nombres suivants.
+Lorsqu'un nombre ne peut pas être représenté, expliquer pourquoi.
+
 \begin{multicols}{2}
 \begin{enumerate}
- 	\item -100
- 	\item 38
- 	\item -200
- 	\item -83
+    \item $-100$
+    \item $38$
+    \item $-200$
+    \item $-83$
 \end{enumerate}
 \end{multicols}
 \end{exercice}
 
+\begin{exercice}
+\textbf{*Complément à deux}
 
-\begin{exercice}\textbf{* Complément à deux }
+Tous les nombres sont codés sur 8 bits.
+
 \begin{enumerate}[a)]
-\item Donner la représentation en complément à deux des nombres suivants:
+    \item Donner la représentation en complément à deux des nombres suivants :
+    \begin{enumerate}
+        \item $-95$
+        \item $-64$
+    \end{enumerate}
 
-\begin{enumerate}
-\item -95
-\item -64
-\end{enumerate}
+    \item Vérifier que $95+(-95)$ donne bien zéro.
 
-\item Vérifier que 95+(-95) donne bien 0 sur un octet.
-\item Vérifier que 64+(-6) donne bien 0111010 sur un octet.
+    \item Représenter $-6$ en complément à deux, puis vérifier que
+    \[
+        64+(-6)=58.
+    \]
+
+    \item Vérifier que la représentation binaire de $58$ sur 8 bits est
+    \[
+        \texttt{00111010}.
+    \]
 \end{enumerate}
 \end{exercice}
-
 
 \begin{exercice}
-Nous donnons trois nombres binaires:
-\begin{enumerate}[a)]
-\item 00101010
-\item 1011
-\item 10111111
-\end{enumerate}
+Pour chacune des suites de 8 bits suivantes :
+
+\[
+\begin{array}{lll}
+\text{a) }\texttt{00101010}
+&
+\text{b) }\texttt{00001011}
+&
+\text{c) }\texttt{10111111}
+\end{array}
+\]
+
+déterminer sa valeur :
 
 \begin{enumerate}
-\item Que valent ces nombres en représentation non signée?
-\item Que valent ces nombres en représentation signée?
-\item * Que valent ces nombres en complément à 2?
+    \item en représentation non signée ;
+    \item en représentation signe-magnitude ;
+    \item en représentation en complément à deux.
 \end{enumerate}
+
+Que peut-on conclure sur la signification d'une suite de bits ?
 \end{exercice}
+
 
 
 

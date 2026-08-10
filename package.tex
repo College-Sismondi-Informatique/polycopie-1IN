@@ -36,6 +36,13 @@
 
 \usepackage{listings}
 \usepackage{color}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{makecell}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
 \lstset{ % General setup for the package
     language=Python,
     basicstyle=\footnotesize,
@@ -291,6 +298,42 @@ splittopskip=\topskip, %
 \newtheorem{remarques}[compteurremarque]{Remarques} %remarque et remarques prennent compteurremarque comme compteur commun
 
 \lstMakeShortInline[columns=fixed]|
+
+\newtcolorbox{history}{
+    colback=gray!8,
+    colframe=gray!60,
+    title=Histoire,
+    fonttitle=\bfseries,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
+
+\newtcolorbox{definitionbox}{
+    colback=blue!5,
+    colframe=blue!60!black,
+    title=Définition,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{aretenir}{
+    colback=yellow!8,
+    colframe=orange!70!black,
+    title=À retenir,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{definition}{
+    enhanced,
+    breakable,
+    colback=blue!5,
+    colframe=blue!60!black,
+    title=Définition,
+    fonttitle=\bfseries,
+    arc=2mm
+}
 
 %%%%%%%% Commandes de Matthieu
 
