@@ -227,7 +227,7 @@ La deuxième méthode consiste  à effectuer des divisions successives par 2. Le
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=.5]{images/divisionbinaire}
+\includegraphics[scale=.6]{images/divisionbinaire}
 \end{center}
 \end{figure}
 
@@ -249,44 +249,7 @@ Les nombres suivants sont écrits en base 10. Donner leur écriture en base 2:
 \end{multicols}
 \end{exercice}
 
-\subsection{*La base hexadécimale}
 
-C'est le code utilisé dans la programmation de certains automates et microprocesseurs. Il est composé de : 10 chiffres de 0 à 9, et 6 lettres de A à F. Les adresses MAC (adresses uniques associées à chaque carte réseau dans le monde) sont aussi écrites en base hexadécimale.
-
-La manipulation des nombres écrits en binaire est difficile pour l'être humain et la conversion en décimal n'est pas simple. C'est pourquoi nous utilisons de préférence le système hexadécimal (base 16). 
-
-Le tableau ci-dessous montre la représentation des nombres de 0 à 15 dans les bases 10, 2 et 16.
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=.5]{images/tableaubase}
-\end{center}
-\end{figure}
-
-
-Par exemple, $B4F_{(16)}= B \cdot 16^2 + 4 \cdot 16^1 + F\cdot 16^0= 11 \cdot 16^2 + 4 \cdot 16^1 + 15\cdot 16^0=2 895_{(16)}$
-
-\subsubsection{Conversion en binaire}
-
-Pour convertir un nombre binaire en hexadécimal il suffit de remarquer que chaque groupe de 4 bits représente un chiffre en hexadécimal:
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=.5]{images/hexadecimal}
-\end{center}
-\end{figure}
-
-\begin{exercice}
-* Écrire les nombres suivants en base hexadécimale:
-\begin{multicols}{2}
-\begin{enumerate}
-\item $10010010110_{(2)}$
-\item $111110_{(2)}$
-\item  $1000110101110101_{(2)}$
-\item $11110000000011_{(2)}$
-\end{enumerate}
-\end{multicols}
-\end{exercice}
 
 \subsubsection{Conversion en décimal}
 
@@ -403,22 +366,60 @@ Effectuer les additions binaires suivantes:
 \end{enumerate}
 \end{exercice}
 
+\subsection{*La base hexadécimale}
+
+C'est le code utilisé dans la programmation de certains automates et microprocesseurs. Il est composé de : 10 chiffres de 0 à 9, et 6 lettres de A à F. Les adresses MAC (adresses uniques associées à chaque carte réseau dans le monde) sont aussi écrites en base hexadécimale.
+
+La manipulation des nombres écrits en binaire est difficile pour l'être humain et la conversion en décimal n'est pas simple. C'est pourquoi nous utilisons de préférence le système hexadécimal (base 16). 
+
+Le tableau ci-dessous montre la représentation des nombres de 0 à 15 dans les bases 10, 2 et 16.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=.5]{images/tableaubase}
+\end{center}
+\end{figure}
+
+
+Par exemple, $B4F_{(16)}= B \cdot 16^2 + 4 \cdot 16^1 + F\cdot 16^0= 11 \cdot 16^2 + 4 \cdot 16^1 + 15\cdot 16^0=2 895_{(16)}$
+
+\subsubsection{Conversion en binaire}
+
+Pour convertir un nombre binaire en hexadécimal il suffit de remarquer que chaque groupe de 4 bits représente un chiffre en hexadécimal:
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=.5]{images/hexadecimal}
+\end{center}
+\end{figure}
+
+\begin{exercice}
+* Écrire les nombres suivants en base hexadécimale:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $10010010110_{(2)}$
+\item $111110_{(2)}$
+\item  $1000110101110101_{(2)}$
+\item $11110000000011_{(2)}$
+\end{enumerate}
+\end{multicols}
+\end{exercice}
 
 \section{Représentation des nombres entiers relatifs signés}
 
-\textit{Rappel :}
-\begin{itemize}
-    \item Les \textbf{nombres entiers naturels} sont les nombres entiers positifs ou nuls :
+\begin{definition}
+Les \textbf{nombres entiers naturels} sont les nombres entiers positifs ou nuls :
     \[
         \mathbb{N}=\{0,1,2,3,\ldots\}
     \]
 
-    \item Les \textbf{nombres entiers relatifs} regroupent les nombres entiers
+Les \textbf{nombres entiers relatifs} regroupent les nombres entiers
     négatifs, le nombre zéro et les nombres entiers positifs :
     \[
         \mathbb{Z}=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}
     \]
-\end{itemize}
+
+\end{definition}
 
 Jusqu'à présent, nous avons appris à représenter en binaire des nombres
 entiers naturels. Pourtant, de nombreuses situations nécessitent également
