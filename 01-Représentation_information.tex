@@ -611,7 +611,7 @@ capables de traiter séparément le signe et la valeur absolue.
 Autres exemples:
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=.5]{images/Operationsigne}
+\includegraphics[scale=.4]{images/Operationsigne}
 \end{center}
 \end{figure}
 
@@ -910,7 +910,10 @@ Entiers relatifs
 
 \subsection{Résumé}
 
+\begin{aretenir}
 \begin{itemize}
+\renewcommand{\labelitemi}{$\bullet$}
+
     \item Une suite de bits n'a pas de signification unique : son
     interprétation dépend de la représentation choisie.
 
@@ -932,6 +935,7 @@ Entiers relatifs
     \item Sur $n$ bits, les valeurs en complément à deux vont de
     $-2^{n-1}$ à $2^{n-1}-1$.
 \end{itemize}
+\end{aretenir}
 
 \begin{exercice}
 En supposant que les nombres soient écrits sur 8 bits :
@@ -1012,74 +1016,423 @@ Que peut-on conclure sur la signification d'une suite de bits ?
 
 
 \newpage
+
 \section{Les codes de caractères}
 
+Nous savons maintenant représenter des nombres à l'aide de bits. Mais un ordinateur
+ne manipule pas uniquement des nombres : il doit également pouvoir stocker et
+transmettre du texte.
+
+Par exemple, lorsque nous appuyons sur la touche \texttt{A} du clavier, l'ordinateur
+doit pouvoir représenter ce caractère sous forme numérique.
+
+\begin{aretenir}
+Un ordinateur ne stocke donc pas directement les lettres ou les symboles.
+Il leur associe des \textbf{nombres}, qui sont ensuite représentés en binaire.
+
+Un \textbf{code de caractères} définit la correspondance entre les caractères
+et ces nombres.
+\end{aretenir}
+
+
 \subsection{La table ASCII}
-Le binaire permet de coder les nombres que les systèmes informatiques peuvent manipuler. Cependant, l'ordinateur doit aussi utiliser des caractères alphanumériques pour mémoriser et transmettre des textes, par exemple de l’ordinateur vers l’imprimante, d’un automate programmable vers un terminal, d’un clavier vers un processeur, etc. 
+
+L'un des premiers standards largement utilisés pour représenter du texte est le
+code \textbf{ASCII} (\textit{American Standard Code for Information Interchange}),
+publié dans les années 1960.
+
+ASCII utilise \textbf{7 bits}. Il permet donc de représenter
+
+\[
+2^7 = 128
+\]
+
+valeurs différentes, numérotées de 0 à 127.
+
+Chaque caractère est associé à un nombre. Par exemple :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cccc}
+\toprule
+\textbf{Caractère} & \textbf{ASCII décimal} & \textbf{Binaire} & \textbf{Hexadécimal} \\
+\midrule
+\texttt{A} & 65  & \texttt{01000001} & \texttt{41} \\
+\texttt{B} & 66  & \texttt{01000010} & \texttt{42} \\
+\texttt{a} & 97  & \texttt{01100001} & \texttt{61} \\
+\texttt{f} & 102 & \texttt{01100110} & \texttt{66} \\
+\texttt{2} & 50  & \texttt{00110010} & \texttt{32} \\
+\texttt{?} & 63  & \texttt{00111111} & \texttt{3F} \\
+\texttt{espace} & 32 & \texttt{00100000} & \texttt{20} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Par exemple, le caractère \texttt{A} possède le code ASCII 65. En binaire :
+
+\[
+\texttt{A}
+\quad\longrightarrow\quad
+65
+\quad\longrightarrow\quad
+\texttt{01000001}
+\]
+
+\begin{aretenir}
+Le caractère \texttt{2} et le nombre $2$ ne doivent pas être confondus.
+
+Le nombre $2$, utilisé dans un calcul, peut être représenté en binaire par
+\texttt{00000010}.
+
+Le caractère \texttt{2}, utilisé dans un texte, possède le code ASCII 50 et est
+donc représenté par \texttt{00110010}.
+\end{aretenir}
+
+\newpage
+\subsubsection{Organisation de la table ASCII}
+
+Les 128 codes ASCII sont organisés en plusieurs groupes :
+
+\begin{itemize}
+    \item les codes \textbf{0 à 31}, ainsi que le code 127, sont principalement
+    des \textbf{caractères de contrôle} ;
+
+    \item les codes \textbf{32 à 126} correspondent aux caractères affichables :
+    lettres, chiffres, signes de ponctuation et symboles ;
+
+    \item les lettres majuscules \texttt{A} à \texttt{Z} occupent les codes
+    \textbf{65 à 90} ;
+
+    \item les lettres minuscules \texttt{a} à \texttt{z} occupent les codes
+    \textbf{97 à 122} ;
+
+    \item les chiffres \texttt{0} à \texttt{9} occupent les codes
+    \textbf{48 à 57}.
+\end{itemize}
+
+Les caractères de contrôle ne représentent généralement pas un symbole visible.
+Ils servaient notamment à commander les terminaux et les périphériques.
+
+Quelques exemples :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{ccl}
+\toprule
+\textbf{Code} & \textbf{Nom} & \textbf{Fonction} \\
+\midrule
+7  & BEL & signal sonore \\
+9  & TAB & tabulation \\
+10 & LF  & passage à la ligne suivante \\
+13 & CR  & retour au début de la ligne \\
+27 & ESC & échappement \\
+\bottomrule
+\end{tabular}
+\end{center}
+
 \begin{center}
 \begin{figure}[h!]
-\centerline{\includegraphics[width=18cm]{images/ASCII2}}
+\centering
+\includegraphics[width=\textwidth]{images/ASCII2}
+\caption{Table des caractères ASCII}
 \end{figure}
 \end{center}
 
-Le code {\bf ASCII} (American Standard Code for Information Interchange) représente les caractères sur 7 bits (c'est-à-dire 128 caractères possibles, de 0 à 127). Les codes 0 à 31 ne sont pas des caractères. On les appelle caractères de contrôle, car ils permettent de faire des actions telles que : retour à la ligne (CR). Bip sonore (BEL). Les codes 65 à 90 représentent les majuscules. Les codes 97 à 122 représentent les minuscules. Le caractère A par exemple à pour code 65 soit 01000001 en binaire. 
 
+\subsubsection{Les limites d'ASCII}
 
-Par exemple: 
-\begin{enumerate}[a)]
-\item Le caractère f : 102 
-\item le point d'interrogation ? : 63 
-\item Le chiffre 2 : 50
-\end{enumerate}
+ASCII a été conçu principalement pour la langue anglaise.
 
-Le code ASCII a été mis au point pour la langue anglaise, il ne contient donc pas de caractères accentués ni de caractères spécifiques à une langue. Le code ASCII a donc été étendu à 8 bits pour pouvoir coder plus de caractères (on parle d'ailleurs de code \textbf{ASCII étendu}...)
+Il permet d'écrire :
+
+\begin{center}
+\texttt{Hello world!}
+\end{center}
+
+mais il ne contient pas de caractères tels que :
+
+\begin{center}
+\texttt{é \qquad è \qquad à \qquad ç \qquad ü}
+\end{center}
+
+et encore moins les caractères utilisés dans d'autres systèmes d'écriture :
+
+\begin{center}
+\Large
+$\Omega$
+\qquad
+Ж
+\qquad
+中
+\end{center}
+
+Pour représenter davantage de caractères, différents systèmes utilisant 8 bits
+ont été développés. Ils permettaient de représenter jusqu'à
+
+\[
+2^8 = 256
+\]
+
+valeurs.
+
+On parle souvent, de manière générale, d'\textbf{ASCII étendu}.
+
+\begin{aretenir}
+Il n'existe cependant pas une unique table « ASCII étendu ». Plusieurs jeux de
+caractères différents ont existé, par exemple ISO-8859-1 ou Windows-1252.
+
+Un même nombre pouvait donc représenter des caractères différents selon le
+système utilisé.
+\end{aretenir}
+
+Cette situation posait un problème important pour l'échange international de
+documents. Il fallait disposer d'un système commun capable de représenter les
+caractères de toutes les langues.
+
+C'est l'objectif d'\textbf{Unicode}.
+
 
 \subsection{Unicode}
 
-Le code ASCII est utilisable pour l'anglais mais limité pour les autres langues. Il n'y a que 95 caractères imprimables.
+Unicode est un standard international qui attribue un numéro unique à chaque
+caractère.
 
-Le code Unicode est un système de codage des caractères sur 16 bits mis au point en 1991. Le système Unicode permet de représenter n'importe quel caractère par un code sur 16 bits, indépendamment de tout système d'exploitation ou langage de programmation (environ 64 000 caractères).
+Ce numéro est appelé un \textbf{point de code} (\textit{code point}).
 
-Il regroupe ainsi la quasi-totalité des alphabets existants (arabe, arménien, cyrillique, grec, hébreu, latin, ...) et est compatible avec le code ASCII.
+Il est généralement écrit sous la forme :
 
-L'ensemble des codes Unicode est disponible sur le site {\bf http://www.unicode.org}.
+\[
+\texttt{U+XXXX}
+\]
+
+Par exemple :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{ccc}
+\toprule
+\textbf{Caractère} & \textbf{Unicode} & \textbf{Valeur décimale} \\
+\midrule
+\texttt{A} & \texttt{U+0041} & 65 \\
+\texttt{é} & \texttt{U+00E9} & 233 \\
+$\Omega$   & \texttt{U+03A9} & 937 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Unicode permet ainsi de représenter des caractères provenant de très nombreux
+systèmes d'écriture : alphabet latin, grec, cyrillique, arabe, hébreu,
+caractères chinois, japonais, coréens, etc.
+
+Il permet également de représenter de nombreux symboles et les emoji.
+
+\begin{aretenir}
+Unicode est compatible avec ASCII : les 128 premiers points de code Unicode
+correspondent aux caractères ASCII.
+
+Ainsi :
+\[
+\texttt{A}
+\quad=\quad
+\text{ASCII }65
+\quad=\quad
+\text{Unicode U+0041}.
+\]
+\end{aretenir}
 
 
+\subsection{Unicode et UTF-8}
+
+Il faut distinguer deux notions :
+
+\begin{itemize}
+    \item \textbf{Unicode} indique quel numéro est associé à chaque caractère ;
+
+    \item \textbf{UTF-8} indique comment ce numéro est représenté en mémoire
+    sous forme d'octets.
+\end{itemize}
+
+On peut résumer le processus ainsi :
+
+\begin{center}
+\begin{tikzpicture}[
+    box/.style={
+        draw=black!60,
+        line width=0.4pt,
+        rounded corners,
+        minimum width=3cm,
+        minimum height=1.2cm,
+        align=center
+    },
+    fleche/.style={
+        ->,
+        >=stealth,
+        line width=0.5pt
+    }
+]
+
+\node[box] (car) at (0,0)
+    {\textbf{Caractère}\\[1mm]\texttt{A}};
+
+\node[box] (uni) at (4,0)
+    {\textbf{Unicode}\\[1mm]\texttt{U+0041}};
+
+\node[box] (utf) at (8,0)
+    {\textbf{UTF-8}\\[1mm]\texttt{01000001}};
+
+\draw[fleche] (car) -- (uni);
+\draw[fleche] (uni) -- (utf);
+
+\end{tikzpicture}
+\end{center}
+
+UTF-8 utilise un nombre variable d'octets pour représenter un caractère :
+
+\begin{itemize}
+    \item les caractères ASCII utilisent \textbf{1 octet} ;
+    \item d'autres caractères utilisent \textbf{2, 3 ou 4 octets}.
+\end{itemize}
+
+Par exemple :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cccc}
+\toprule
+\textbf{Caractère} &
+\textbf{Unicode} &
+\textbf{UTF-8 (hex.)} &
+\textbf{Taille} \\
+\midrule
+\texttt{A} & \texttt{U+0041} & \texttt{41} & 1 octet \\
+\texttt{é} & \texttt{U+00E9} & \texttt{C3 A9} & 2 octets \\
+$\Omega$   & \texttt{U+03A9} & \texttt{CE A9} & 2 octets \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Cette organisation présente un avantage important : un texte composé uniquement
+de caractères ASCII possède exactement la même représentation en ASCII et en
+UTF-8.
+
+
+\begin{aretenir}
+\begin{itemize}
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+
+    \item Un ordinateur représente les caractères par des nombres.
+
+    \item ASCII utilise 7 bits et définit 128 codes.
+
+    \item ASCII a été conçu principalement pour l'anglais et ne permet pas de
+    représenter tous les caractères utilisés dans le monde.
+
+    \item Unicode attribue un numéro unique, appelé \textbf{point de code}, à
+    chaque caractère.
+
+    \item UTF-8 est une manière de représenter les caractères Unicode sous forme
+    d'octets.
+
+    \item UTF-8 utilise de 1 à 4 octets par caractère.
+
+\end{itemize}
+\end{aretenir}
+
+\newpage
 \subsection{Exercices}
+
 \begin{exercice}
-Coder ASCII étendu binaire les textes :
+À l'aide de la table ASCII, donner le code décimal et la représentation binaire
+sur 8 bits de chacun des caractères suivants :
+
 \begin{multicols}{2}
 \begin{enumerate}
-\item { Sismondi}
-\item { Cc cv ?}
+    \item \texttt{S}
+    \item \texttt{i}
+    \item \texttt{5}
+    \item \texttt{?}
 \end{enumerate}
 \end{multicols}
 \end{exercice}
 
+
 \begin{exercice}
-Décoder en lettres les mots suivants qui sont codés en ASCII étendu (binaire):
+Coder en ASCII binaire le texte suivant :
+
+\begin{center}
+\texttt{Sismondi}
+\end{center}
+
+Chaque caractère sera représenté sur 8 bits.
+\end{exercice}
+
+
+\begin{exercice}
+Décoder les suites d'octets suivantes à l'aide de la table ASCII :
+
 \begin{enumerate}
-\item 01100011 01101111 01110101 01100011 01101111 01110101
-\item 01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100 00100000 00100001
+
+\item
+\texttt{01100011 01101111 01110101 01100011 01101111 01110101}
+
+\item
+\texttt{01001000 01100101 01101100 01101100 01101111
+00100000 01110111 01101111 01110010 01101100 01100100
+00100001}
+
 \end{enumerate}
 \end{exercice}
 
+
 \begin{exercice}
-    En utilisant le codage ASCII étendu, combien d'octets seraient nécessaires pour stocker la phrase suivante:  \texttt{Bonjour l’univers !}
+En s'aidant de la table ASCII, classer les caractères suivants par ordre
+croissant de leur code :
+
+\begin{center}
+\texttt{ESC \qquad A \qquad NUL \qquad m \qquad 8 \qquad < \qquad a \qquad ?}
+\end{center}
 \end{exercice}
 
+
 \begin{exercice}
-* En s’aidant de la table ASCII, classer par ordre croissant les caractères suivants (ne pas tenir compte des virgules) : ESC, A, NUL, Delete, m, 8, <, a, ?
+Sans consulter la table ASCII complète, répondre aux questions suivantes :
+
+\begin{enumerate}
+    \item Le code ASCII de \texttt{A} est 65. Quel est celui de \texttt{B} ?
+    \item Le code ASCII de \texttt{a} est 97. Quel est celui de \texttt{d} ?
+    \item Le code ASCII de \texttt{0} est 48. Quel est celui de \texttt{7} ?
+    \item Pourquoi peut-on trouver ces réponses sans connaître toute la table ?
+\end{enumerate}
 \end{exercice}
 
 
 \begin{exercice}
-* Complétez le tableau ci-dessous:
+On considère les deux textes suivants :
+
+\begin{center}
+\texttt{Bonjour}
+
+\medskip
+
+\texttt{Bonjour à tous}
+\end{center}
+
+\begin{enumerate}
+    \item Combien de caractères contient le premier texte ?
+    \item Combien d'octets occupe-t-il en UTF-8 ?
+    \item Combien de caractères contient le deuxième texte, espaces compris ?
+    \item Le nombre de caractères est-il nécessairement égal au nombre
+    d'octets en UTF-8 ? Justifier à l'aide du caractère \texttt{à}.
+\end{enumerate}
+\end{exercice}
+
+
+\begin{exercice}
+Compléter le tableau de conversion suivant :
 
 \begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=.25]{images/tableauconversion}
-\end{center}
+\centering
+\includegraphics[scale=.27]{images/tableauconversion}
 \end{figure}
 \end{exercice}
 
