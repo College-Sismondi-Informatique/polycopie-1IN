@@ -1,5 +1,27 @@
 % Ressources à installer : texlive-science et texlive-lang-french ou texlive-lang-european
 %à compiler avec XeLaTeX à cause des image pstricks
+% =========================================================
+% Style des pages
+% =========================================================
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhfoffset[L,R]{0mm}
+
+\fancyhead[C]{%
+    \scriptsize\itshape\MakeUppercase{\leftmark}%
+}
+
+\fancyfoot[LE]{\thepage}
+\fancyfoot[RO]{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,6 +38,7 @@
 \usepackage{multicol}
 \usepackage{comment}
 \usepackage{enumerate,cancel}
+\usepackage{enumitem}
 \usepackage{lipsum,minitoc}
 %\usepackage{chngcntr}
 \usepackage{amsmath,amsfonts,minitoc,amsthm,pgfplots}
