@@ -627,7 +627,7 @@ soit environ $3{,}28$ Mo en écriture décimale, avant toute compression.
 \begin{center}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=9cm]{images/image_rvb_24bits_1.jpg}
+\includegraphics[width=8cm]{images/image_rvb_24bits_1.png}
 \caption{Exemple d'une image RVB de définition $1280 \times 853$ pixels.}
 \end{figure}
 \end{center}
@@ -641,7 +641,6 @@ mais le numéro d'une couleur dans cette palette.
 
 Si la palette contient au maximum 8 couleurs, 3 bits suffisent pour coder l'indice
 de chaque pixel, car :
-
 \[
 2^3 = 8.
 \]
@@ -658,7 +657,7 @@ auxquels il faut ajouter les données nécessaires pour stocker la palette.
 \begin{center}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=6cm]{images/mario_couleurs_indexees_1.png}
+\includegraphics[width=16cm]{images/mario_couleurs_indexees_1.png}
 \caption{Exemple d'image utilisant un petit nombre de couleurs.}
 \end{figure}
 \end{center}
@@ -670,6 +669,15 @@ Avec 8 bits par pixel, on peut référencer jusqu'à :
 \]
 
 couleurs différentes dans la palette.
+\begin{center}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=16cm]{images/canyon_couleurs_indexees_2.png}
+\caption{Exemple d'image utilisant un petit nombre de couleurs.}
+\end{figure}
+\end{center}
+
+
 
 \begin{remarqueBox}
 La profondeur de couleur indique le nombre de bits utilisés pour représenter la
