@@ -157,7 +157,7 @@ de longueur. Elle s'exprime généralement en \textbf{pixels par pouce} (ppp) ou
 \begin{center}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=10cm]{images/dpi_poisson.png}
+\includegraphics[width=15cm]{images/dpi_poisson.png}
 \caption{Effet de la résolution sur une image.}
 \end{figure}
 \end{center}
@@ -207,10 +207,10 @@ Exemple : une image de $1024 \times 768$ pixels imprimée à 300 ppp aura enviro
 
 \subsubsection{Première méthode}
 
-\begin{defi}
+\begin{definition}
 Une image matricielle est constituée d'une grille de petits points appelés
 \textbf{pixels} (\textit{picture elements}, c'est-à-dire « éléments d'image »).
-\end{defi}
+\end{definition}
 
 Pour une image strictement noire et blanche, deux valeurs suffisent. On peut décider
 de coder chaque pixel par un seul bit :
@@ -288,11 +288,77 @@ premier pixel est noir, la ligne commence donc par 0.
     \item Une ligne commençant par un pixel noir peut, par exemple, être représentée
     par 0, 1, 3, 1.
 \end{enumerate}
+\newpage
+\begin{exercice}
+Décoder l'image suivante:
+
+\begin{center}
+\begin{tikzpicture}[scale=.5]
+\foreach \x in {0,...,17}{
+	\draw (\x,0) -- +(0,13);
+	}
+
+\foreach \x in {0,...,13}{
+	\draw (0,\x) -- +(17,0);
+	}
+\draw (17,12.5) node[right] {11111111111111111}; 
+\draw (17,11.5) node[right] {11111110001110011}; 
+\draw (17,10.5) node[right] {11111001110001101}; 
+\draw (17,9.5) node[right] {11110111101101101}; 
+\draw (17,8.5) node[right] {11110110011101011}; 
+\draw (17,7.5) node[right] {11101001111110111}; 
+\draw (17,6.5) node[right] {11100111111110111}; 
+\draw (17,5.5) node[right] {11101111111110111}; 
+\draw (17,4.5) node[right] {11010111111101111}; 
+\draw (17,3.5) node[right] {10110111111101111}; 
+\draw (17,2.5) node[right] {10111001110011111}; 
+\draw (17,1.5) node[right] {11000110001111111}; 
+\draw (17,0.5) node[right] {11111111111111111}; 	
+
+\end{tikzpicture}
+\end{center}
+\end{exercice}
+
+
+\begin{exercice}
+Décoder l'image suivante: *
+
+\begin{center}
+\begin{tikzpicture}[scale=.5]
+\foreach \x in {0,...,16}{
+	\draw (\x,0) -- +(0,9);
+	}
+
+\foreach \x in {0,...,9}{
+	\draw (0,\x) -- +(16,0);
+	}
+
+\draw (17,8.5) node[right] {4,11}; 
+\draw (17,7.5) node[right] {4,9,2,1}; 
+\draw (17,6.5) node[right] {4,9,2,1}; 
+\draw (17,5.5) node[right] {4,11}; 
+\draw (17,4.5) node[right] {4,9}; 
+\draw (17,3.5) node[right] {4,9}; 
+\draw (17,2.5) node[right] {5,7}; 
+\draw (17,1.5) node[right] {0,16}; 
+\draw (17,0.5) node[right] {1,14}; 	
+
+\end{tikzpicture}
+\end{center}
+\end{exercice}
 
 \subsection{Coder une image en niveaux de gris}
+Plutôt que de simplement avoir 2 couleurs possibles, noir et blanc, on peut décider d’avoir N
+gris différents allant du plus sombre, le noir, au plus clair, le blanc.
+Pour stocker une image en mémoire, il suffit de convenir que chaque point de l’image est
+représenté par un nombre.
+Ce dernier correspond à une certaine couleur.
+Pour une image en 16 niveaux de gris, il faut que chaque point de l’image soit codé par un
+nombre en 4 bits.
+Si chaque point est codé sur 8 bits, l’image peut contenir 256 niveaux de gris différents. Si
+l’on souhaite que l’image contienne plus de couleurs, on pourra utiliser plus de bits pour chaque
+pixel.
 
-Une image en niveaux de gris ne contient pas uniquement du noir et du blanc : chaque
-pixel peut prendre une valeur correspondant à une intensité lumineuse.
 
 Avec un codage sur 8 bits, on dispose de :
 
@@ -335,45 +401,201 @@ dimensions contenant une valeur pour chaque pixel.
 \subsection{Coder une image en couleur}
 
 \subsubsection{Le modèle RVB}
+Pour représenter des images avec des couleurs réalistes, on peut utiliser la même méthode que pour les niveaux de gris, mais en utilisant 3 nombres différents, 1 pour chaque couleur primaire.
 
-Notre œil possède notamment trois types de cônes sensibles à différentes zones du
-spectre lumineux. Les écrans exploitent ce principe en utilisant trois composantes
-lumineuses : le \textbf{rouge}, le \textbf{vert} et le \textbf{bleu}.
+Le code le plus utilisé est le codage {\bf RVB} (Rouge, Vert, Bleu) (RGB en anglais). 
 
-Le codage \textbf{RVB} (RGB en anglais) associe donc trois nombres à chaque pixel :
-une intensité de rouge, une intensité de vert et une intensité de bleu.
+Chacune de ces couleurs est codée sur 1 octet (8 bits). 
+Avec ce système, chaque pixel est codé sur 3 octets pour un total de 24 bits. 
 
-Si chaque composante est codée sur 8 bits, elle peut prendre $2^8=256$ valeurs,
-de 0 à 255. Un pixel nécessite alors :
+La valeur décimale pour chaque couleur peut s’étendre de 0 à 255, cette limite est fixée par la valeur maximale qu’un octet peut représenter avec le système binaire.
 
-\[
-8 + 8 + 8 = 24 \text{ bits} = 3 \text{ octets}.
-\]
+L’avantage du système RVB est sa simplicité, 
+il s’appuie sur les caractéristiques de la vision humaine pour fournir à l’utilisateur une reproduction des couleurs au plus proche de la réalité.
 
-Le nombre de couleurs théoriquement représentables est :
-
-\[
-256^3 = 2^{24} = 16\,777\,216.
-\]
 
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{lrrrr}
-\toprule
-\textbf{Couleur} & \textbf{Rouge} & \textbf{Vert} & \textbf{Bleu} & \textbf{Hexadécimal} \\
-\midrule
-Blanc       & 255 & 255 & 255 & FFFFFF \\
-Rouge       & 255 & 0   & 0   & FF0000 \\
-Jaune       & 255 & 255 & 0   & FFFF00 \\
-Vert        & 0   & 255 & 0   & 00FF00 \\
-Cyan        & 0   & 255 & 255 & 00FFFF \\
-Bleu        & 0   & 0   & 255 & 0000FF \\
-Magenta     & 255 & 0   & 255 & FF00FF \\
-Gris moyen  & 128 & 128 & 128 & 808080 \\
-Noir        & 0   & 0   & 0   & 000000 \\
-\bottomrule
-\end{tabular}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm]{images/RGB}
+\caption{Image RGB}
+\end{figure}
 \end{center}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=.5]
+
+% Couleurs personnalisées
+\definecolor{monmagenta}{RGB}{255,0,255}
+\definecolor{moncyan}{RGB}{0,255,255}
+\definecolor{monjaune}{RGB}{255,255,0}
+\definecolor{grisMoyen}{RGB}{128,128,128}
+
+% Dimensions des colonnes
+% Couleur = 7
+% Rouge   = 4
+% Vert    = 4
+% Bleu    = 4
+% Hexa    = 7
+
+% Fond de l'en-tête
+\fill[gray!15] (0,9) rectangle (26,10);
+
+% Traits horizontaux
+\foreach \y in {0,...,10}{
+    \draw[black!70, line width=0.4pt] (0,\y) -- (26,\y);
+}
+
+% Traits verticaux
+\foreach \x in {0,7,11,15,19,26}{
+    \draw[black!70, line width=0.4pt] (\x,0) -- (\x,10);
+}
+
+% En-tête
+\node[font=\bfseries] at (3.5,9.5) {Couleur};
+\node[font=\bfseries] at (9,9.5) {Rouge};
+\node[font=\bfseries] at (13,9.5) {Vert};
+\node[font=\bfseries] at (17,9.5) {Bleu};
+\node[font=\bfseries] at (22.5,9.5) {Hexadécimal};
+
+% Gris moyen
+\fill[grisMoyen] (0,8) rectangle (7,9);
+\node[text=white] at (3.5,8.5) {Gris moyen};
+\node at (9,8.5) {128};
+\node at (13,8.5) {128};
+\node at (17,8.5) {128};
+\node[font=\ttfamily] at (22.5,8.5) {808080};
+
+% Blanc
+\fill[white] (0,7) rectangle (7,8);
+\node at (3.5,7.5) {Blanc};
+\node at (9,7.5) {255};
+\node at (13,7.5) {255};
+\node at (17,7.5) {255};
+\node[font=\ttfamily] at (22.5,7.5) {FFFFFF};
+
+% Rouge
+\fill[red] (0,6) rectangle (7,7);
+\node at (3.5,6.5) {Rouge};
+\node at (9,6.5) {255};
+\node at (13,6.5) {0};
+\node at (17,6.5) {0};
+\node[font=\ttfamily] at (22.5,6.5) {FF0000};
+
+% Jaune
+\fill[monjaune] (0,5) rectangle (7,6);
+\node at (3.5,5.5) {Jaune};
+\node at (9,5.5) {255};
+\node at (13,5.5) {255};
+\node at (17,5.5) {0};
+\node[font=\ttfamily] at (22.5,5.5) {FFFF00};
+
+% Vert
+\fill[green] (0,4) rectangle (7,5);
+\node at (3.5,4.5) {Vert};
+\node at (9,4.5) {0};
+\node at (13,4.5) {255};
+\node at (17,4.5) {0};
+\node[font=\ttfamily] at (22.5,4.5) {00FF00};
+
+% Cyan
+\fill[moncyan] (0,3) rectangle (7,4);
+\node at (3.5,3.5) {Cyan};
+\node at (9,3.5) {0};
+\node at (13,3.5) {255};
+\node at (17,3.5) {255};
+\node[font=\ttfamily] at (22.5,3.5) {00FFFF};
+
+% Bleu
+\fill[blue] (0,2) rectangle (7,3);
+\node[text=white] at (3.5,2.5) {Bleu};
+\node at (9,2.5) {0};
+\node at (13,2.5) {0};
+\node at (17,2.5) {255};
+\node[font=\ttfamily] at (22.5,2.5) {0000FF};
+
+% Magenta
+\fill[monmagenta] (0,1) rectangle (7,2);
+\node at (3.5,1.5) {Magenta};
+\node at (9,1.5) {255};
+\node at (13,1.5) {0};
+\node at (17,1.5) {255};
+\node[font=\ttfamily] at (22.5,1.5) {FF00FF};
+
+% Noir
+\fill[black] (0,0) rectangle (7,1);
+\node[text=white] at (3.5,0.5) {Noir};
+\node at (9,0.5) {0};
+\node at (13,0.5) {0};
+\node at (17,0.5) {0};
+\node[font=\ttfamily] at (22.5,0.5) {000000};
+
+\end{tikzpicture}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+Quelques précisions intéressantes:
+\begin{itemize}[itemsep=3pt,leftmargin=+18mm]
+\renewcommand{\labelitemi}{$\bullet$}
+
+    \item Comme pour les images en noir et blanc ou en niveaux de gris, 
+    la représentation d'une image en couleur nécessite de définir une 
+    méthode de codage. Le modèle \textbf{RVB} utilise les trois composantes 
+    \textbf{Rouge}, \textbf{Vert} et \textbf{Bleu}.
+
+    \item Le nombre de bits utilisés pour représenter la couleur d'un pixel
+    est appelé \textbf{profondeur de couleur}. Plus ce nombre est élevé,
+    plus le nombre de couleurs différentes pouvant être représentées est important.
+
+    \item Un codage sur \textbf{16 bits} permet de représenter jusqu'à
+    \[
+        2^{16} = 65\,536
+    \]
+    couleurs différentes.
+
+    \item Un codage sur \textbf{24 bits} permet de représenter
+    \[
+        2^{24} = 16\,777\,216
+    \]
+    couleurs différentes, soit plus de 16 millions de couleurs.
+
+    \item Dans une image RVB sur \textbf{24 bits}, chaque pixel occupe
+    \textbf{3 octets} :
+    \begin{itemize}
+        \item 8 bits pour le \textbf{rouge} : 256 intensités possibles ;
+        \item 8 bits pour le \textbf{vert} : 256 intensités possibles ;
+        \item 8 bits pour le \textbf{bleu} : 256 intensités possibles.
+    \end{itemize}
+
+    \item La couleur du pixel est obtenue en combinant les intensités de ces
+    trois composantes :
+    \[
+        256 \times 256 \times 256
+        = 256^3 = 2^{24} 
+        = 16\,777\,216 \text{ couleurs} 
+    \]
+
+    \item Un codage sur \textbf{32 bits} utilise souvent les 24 bits du modèle
+    RVB auxquels s'ajoutent \textbf{8 bits supplémentaires pour le canal alpha},
+    qui permet notamment de gérer la transparence.
+
+\end{itemize}
+
+
+
+
+
+
 
 \subsubsection{Calcul de la taille d'une image non compressée}
 
