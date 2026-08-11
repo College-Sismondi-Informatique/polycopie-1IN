@@ -334,7 +334,43 @@ splittopskip=\topskip, %
     fonttitle=\bfseries,
     arc=2mm
 }
+\newtcolorbox{remarqueBox}{
+    enhanced,
+    breakable,
+    colback=gray!8,
+    colframe=gray!60!black,
+    title=Remarque,
+    fonttitle=\bfseries,
+    arc=2mm,
+    left=2mm,
+    right=2mm,
+    top=1mm,
+    bottom=1mm
+}
 
+\lstdefinestyle{svg}{
+    language=XML,
+    basicstyle=\ttfamily\footnotesize,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    breaklines=true,
+    breakatwhitespace=false,
+    frame=single,
+    rulecolor=\color{black!35},
+    backgroundcolor=\color{gray!4},
+    numbers=left,
+    numberstyle=\scriptsize\color{gray!65},
+    numbersep=8pt,
+    xleftmargin=1.5em,
+    framexleftmargin=1em,
+    aboveskip=1em,
+    belowskip=1em,
+    tabsize=2,
+    keywordstyle=\bfseries\color{blue!60!black},
+    stringstyle=\color{red!55!black},
+    commentstyle=\itshape\color{gray!65}
+}
 %%%%%%%% Commandes de Matthieu
 
 %-------------------------------------------------------------------------------

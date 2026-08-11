@@ -5,405 +5,600 @@
 \begin{document}
 
 \setcounter{chapter}{1}
-\chapter{Représentation numérique de l’information - Images}
+\chapter{Représentation numérique de l'information -- Images et son}
+
+\section{Représentation des images}
 
 \subsection{Image numérique}
 
-Grâce aux nombres, les ordinateurs stockent des dessins, des photos et d’autres types d’images.
-{\it Wikipedia} définit l'image numérique  comme toute image (dessin, icône, photographie…) acquise, créée, traitée et stockée sous forme binaire.
+Grâce aux nombres, les ordinateurs peuvent stocker, traiter et transmettre des dessins,
+des photographies et d'autres types d'images.
 
-On distingue deux types d’images numériques:
+Une \textbf{image numérique} est une image (dessin, icône, photographie, etc.) acquise,
+créée, traitée et stockée sous forme binaire. Elle peut notamment être :
+\begin{itemize}
+    \item \textbf{acquise} par un scanner, un appareil photo ou une caméra ;
+    \item \textbf{créée} directement par un programme informatique (image de synthèse) ;
+    \item \textbf{traitée} à l'aide d'un logiciel afin de modifier sa taille, ses couleurs,
+    d'ajouter ou de supprimer des éléments ou d'appliquer des filtres ;
+    \item \textbf{stockée} sur un support informatique.
+\end{itemize}
+
+\begin{remarqueBox}
+Une image numérique doit finalement être représentée par une suite de bits.
+La question est donc : \textbf{comment représenter une image à l'aide de 0 et de 1 ?}
+\end{remarqueBox}
+
+On distingue principalement deux types d'images numériques :
 \begin{enumerate}[a)]
-\item {\bf L'image matricielle (ou bitmap)}:
-Elle est composée de points appelés pixels que l’on ne voit pas à l'œil nu. Lors de l’agrandissement, l’image peut devenir floue, car les pixels ressortent ( les carrés sur l’écran).
-\item {\bf L'image vectorielle}:
-Elle est composée de lignes et de segments qui sont liés entre eux par des formules mathématiques. Grâce à la vectorisation, chaque élément a une place définie qui empêche la déformation de l’image. Au lieu de mémoriser une mosaïque de points élémentaires, on stocke la succession d’opérations conduisant au tracé.
-
-L’usage de ce type d’image concerne les schémas générés par certains logiciels de DAO (Dessin assisté par ordinateur) ou pour les animations Flash utilisées sur internet pour la création de bannières publicitaires.
-
+    \item \textbf{L'image matricielle (ou bitmap)} : Elle est constituée d'une grille de
+    points appelés \textbf{pixels}. Lorsqu'on agrandit fortement l'image, les pixels
+    deviennent visibles et l'image paraît alors pixelisée.
+    \item \textbf{L'image vectorielle} : Elle est composée de lignes et de segments qui sont liés entre eux par
+des formules mathématiques. Grâce à la vectorisation, chaque élément a une place définie qui
+empêche la déformation de l’image. Au lieu de mémoriser une mosaïque de points élémentaires,
+on stocke la succession d’opérations conduisant au tracé.
+L’usage de ce type d’image concerne les schémas générés par certains logiciels de DAO (Dessin
+assisté par ordinateur) ou pour les animations Flash utilisées sur internet pour la création de
+bannières publicitaires.
 \end{enumerate}
 
 \begin{center}
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=8cm]{images/bitmapvectoriel}
-\caption{Différence entre une image bitmap (à gauche) et vectorielle (à droite)}
+\caption{Différence entre une image matricielle (à gauche) et une image vectorielle (à droite).}
 \end{figure}
 \end{center}
 
-\begin{remarque}
+\begin{remarqueBox}
+Les images vectorielles sont particulièrement adaptées aux logos, schémas, icônes et
+dessins techniques. Les images matricielles sont mieux adaptées aux photographies et
+aux images comportant de nombreux détails ou dégradés de couleurs. Il n’est donc pas possible de tout vectoriser, car les photos et les dégradés de couleurs ne se vectorisent pas. En effet, la vectorisation aplatit les couleurs et élimine des dégradés.
+\end{remarqueBox}
 
-Il n’est pas possible de tout vectoriser, car les photos et les dégradés de couleurs ne se vectorisent pas. En effet, la vectorisation aplatit les couleurs et élimine des dégradés.
+\subsubsection{Exemple : le format SVG}
 
-\end{remarque}
+Le format \textbf{SVG} (\textit{Scalable Vector Graphics}) est un format vectoriel.
+L'image n'est pas décrite pixel par pixel : le fichier contient les instructions
+nécessaires pour tracer les différents objets.
 
-\subsection{Définition et Résolution}
-Il est important de définir les notions suivantes : 
-\subsubsection{Définition}
- La \textbf{définition} d'une image est le nombre de points (pixels) constituant l’image.
- 
-\subsubsection{Résolution}
- La \textbf{résolution} d'une image est le nombre de points par unité de surface, exprimé en points par pouce (PPP, en anglais DPI pour Dots Per Inch), un pouce représentant 2.54 cm.
+Par exemple, un cercle peut être défini par les coordonnées de son centre, son rayon
+et sa couleur. De même, un rectangle peut être défini par sa position, sa largeur,
+sa hauteur et sa couleur.
 
 \begin{center}
-\begin{figure} [h!]
+\begin{figure}[h!]
 \centering
-\includegraphics[width=8cm]{images/dpi_poisson.png}
-\caption{Résolution d'une image}
+\includegraphics[width=8cm]{images/exemple_svg_1.png}
+\caption{Exemple d'une image produite à partir d'instructions SVG.}
 \end{figure}
 \end{center}
 
-\subsubsection{Dimension}
-La \textbf{dimension} d’une image est définie par:
-$$largeur = nombre\ de\ colonnes / resolution$$
-$$hauteur = nombre\ de\ ligne / resolution$$
+Voici un exemple simple :
 
-Exemple: Une image de 1024x768 pixels avec une résolution de 300 dpi aura une:
-$$largeur = 1024 / 300 = 3,41 pouces (8,66 cm)$$
-$$hauteur = 768 / 300 = 2,56 pouces (6,5 cm)$$
+\begin{lstlisting}[style=svg,caption={Contenu d'un fichier SVG}]
+<?xml version="1.0" encoding="UTF-8"?>
 
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+
+  <title>Exemple simple de figure SVG</title>
+
+  <desc>
+    Cette figure est constituee d'un rectangle, d'un segment de droite et d'un cercle.
+  </desc>
+
+  <rect width="100" height="80"
+        x="0" y="70"
+        fill="green" />
+
+  <line x1="5" y1="5"
+        x2="250" y2="95"
+        stroke="red" />
+
+  <circle cx="90" cy="80"
+          r="50"
+          fill="blue" />
+
+  <text x="180" y="60">Un texte</text>
+
+</svg>
+\end{lstlisting}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{tabular}{ll}
+\toprule
+\textbf{Balise SVG} & \textbf{Rôle} \\
+\midrule
+\texttt{<svg>}    & définit l'image et ses dimensions \\
+\texttt{<rect>}   & dessine un rectangle \\
+\texttt{<line>}   & dessine un segment de droite \\
+\texttt{<circle>} & dessine un cercle \\
+\texttt{<text>}   & affiche du texte \\
+\bottomrule
+\end{tabular}
+
+\end{center}
+
+\begin{remarqueBox}
+Dans une image SVG, on ne mémorise donc pas la couleur de chacun des pixels.
+On mémorise des \textbf{objets géométriques} et leurs propriétés : position,
+dimensions, couleur, etc.
+
+Lorsqu'on agrandit l'image, l'ordinateur recalcule ces formes. C'est pourquoi
+une image vectorielle peut être agrandie sans devenir pixelisée.
+\end{remarqueBox}
+
+\subsection{Définition, résolution et dimensions}
+
+\subsubsection{Définition}
+
+La \textbf{définition} d'une image matricielle correspond au nombre de pixels qui la
+composent. Elle est généralement indiquée sous la forme :
+
+\[
+\text{largeur en pixels} \times \text{hauteur en pixels}.
+\]
+
+Par exemple, une image de définition $1000 \times 960$ contient :
+
+\[
+1000 \times 960 = 960\,000 \text{ pixels}.
+\]
+
+\subsubsection{Résolution}
+
+La \textbf{résolution} indique le nombre de pixels (ou de points imprimés) par unité
+de longueur. Elle s'exprime généralement en \textbf{pixels par pouce} (ppp) ou en
+\textit{dots per inch} (dpi). Un pouce correspond à $2{,}54$ cm.
+
+\begin{center}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=10cm]{images/dpi_poisson.png}
+\caption{Effet de la résolution sur une image.}
+\end{figure}
+\end{center}
+
+Pour une même dimension physique, plus la résolution est élevée, plus le nombre de
+pixels est important et plus les détails peuvent être fins.
+
+\subsubsection{Dimensions physiques}
+
+La définition d'une image et la résolution d'impression permettent de déterminer
+ses dimensions physiques :
+
+\[
+\text{dimension en pouces}
+=
+\frac{\text{nombre de pixels}}{\text{résolution en ppp}}.
+\]
+
+Pour obtenir la dimension en centimètres :
+
+\[
+\boxed{
+\text{dimension en cm}
+=
+\frac{\text{nombre de pixels}}{\text{résolution en ppp}}
+\times 2{,}54
+}
+\]
+
+Exemple : une image de $1024 \times 768$ pixels imprimée à 300 ppp aura environ :
+
+\[
+\text{largeur}
+=
+\frac{1024}{300}\times 2{,}54
+\simeq 8{,}67 \text{ cm},
+\]
+
+\[
+\text{hauteur}
+=
+\frac{768}{300}\times 2{,}54
+\simeq 6{,}50 \text{ cm}.
+\]
 
 \subsection{Coder une image en noir et blanc}
 
 \subsubsection{Première méthode}
 
 \begin{defi}
-Les écrans d’ordinateur sont divisés en une grille de petits points appelés pixels (picture elements, qui signifie éléments d’image)
+Une image matricielle est constituée d'une grille de petits points appelés
+\textbf{pixels} (\textit{picture elements}, c'est-à-dire « éléments d'image »).
 \end{defi}
 
-Chaque pixel de l'image est codé soit par un 0, représentant un point noir ou un 1, représentant un point blanc. Donc, un bit permet de coder un pixel d’une image en noir et blanc. 
+Pour une image strictement noire et blanche, deux valeurs suffisent. On peut décider
+de coder chaque pixel par un seul bit :
+\begin{itemize}
+    \item $0$ pour un pixel noir ;
+    \item $1$ pour un pixel blanc.
+\end{itemize}
 
-Pour stocker une image en noir et blanc, il suffit de convertir le noir par 0 et le blanc par 1. 
+Un bit permet donc de coder un pixel d'une image en noir et blanc.
 
 \begin{center}
 \begin{tikzpicture}[scale=.5]
 \foreach \x in {0,...,8}
-	{\draw (0,\x) -- +(8,0);
-	\draw (\x,0) -- +(0,8);
-	}
+    {\draw (0,\x) -- +(8,0);
+    \draw (\x,0) -- +(0,8);
+    }
 \foreach \x in {0,...,7}{
-	\foreach \y in {0,...,7}{
-			\draw (\x+.5,\y+.5)  node {$1$};
-		}
-	}	
-	
-\foreach \x in {(2,0),(3,0),(5,0),(6,0),
-						(3,1),(4,1),(5,1),
-						(2,2),(3,2),(5,2),(6,2),
-						(2,3),(3,3),(5,3),(6,3),
-						(3,4),(4,4),(5,4),
-						(4,5),
-						(2,6),(3,6),(4,6),(5,6),
-						(3,7),(4,7),(5,7)
-						}{
-		\filldraw[fill=black] \x rectangle +(1,1);
-		\draw[color=white] \x +(.5,.5) node {0};
+    \foreach \y in {0,...,7}{
+            \draw (\x+.5,\y+.5) node {$1$};
+        }
 }
-	
+\foreach \x in {(2,0),(3,0),(5,0),(6,0),
+                        (3,1),(4,1),(5,1),
+                        (2,2),(3,2),(5,2),(6,2),
+                        (2,3),(3,3),(5,3),(6,3),
+                        (3,4),(4,4),(5,4),
+                        (4,5),
+                        (2,6),(3,6),(4,6),(5,6),
+                        (3,7),(4,7),(5,7)
+                        }{
+        \filldraw[fill=black] \x rectangle +(1,1);
+        \draw[color=white] \x +(.5,.5) node {0};
+}
 \end{tikzpicture}
 \end{center}
 
 \subsubsection{Deuxième méthode *}
 
-Une autre façon consiste à indiquer pour chaque ligne le nombre de points blancs et de points noirs consécutifs.
+Une autre façon de coder une image noire et blanche consiste à indiquer, pour chaque
+ligne, le nombre de pixels blancs puis noirs consécutifs. Cette technique illustre
+le principe de la \textbf{compression par répétitions}.
 
 \begin{center}
 \begin{tikzpicture}[scale=.5]
 \foreach \x in {0,...,5}
-	{\draw (0,\x) -- +(5,0);
-	\draw (\x,0) -- +(0,6);
-	}
+    {\draw (0,\x) -- +(5,0);
+    \draw (\x,0) -- +(0,6);
+    }
 \draw (0,6) -- (5,6);
-	
 \foreach \x in {(1,0),(2,0),(3,0),(4,0),
-						(0,1),(4,1),
-						(0,2),(4,2),
-						(1,3),(2,3),(3,3),(4,3),
-						(4,4),
-						(1,5),(2,5),(3,5)
-						}{
-		\filldraw[fill=black] \x rectangle +(1,1);
-		
+                        (0,1),(4,1),
+                        (0,2),(4,2),
+                        (1,3),(2,3),(3,3),(4,3),
+                        (4,4),
+                        (1,5),(2,5),(3,5)
+                        }{
+        \filldraw[fill=black] \x rectangle +(1,1);
 }
-	
-\draw (6,0.5) node[right] {1,4};	
-\draw (6,1.5) node[right] {0,1,3,1};	
-\draw (6,2.5) node[right] {0,1,3,1};	
+\draw (6,0.5) node[right] {1,4};
+\draw (6,1.5) node[right] {0,1,3,1};
+\draw (6,2.5) node[right] {0,1,3,1};
 \draw (6,3.5) node[right] {1,4};
-\draw (6,4.5) node[right] {4,1};	
-\draw (6,5.5) node[right] {1,3,1};		
-	
+\draw (6,4.5) node[right] {4,1};
+\draw (6,5.5) node[right] {1,3,1};
 \end{tikzpicture}
 \end{center}
 
-L’image de la lettre “a” nous montre comment une image peut être représentée par des nombres. Le premier nombre représente toujours le nombre de pixels blancs. Si le premier pixel est noir, la ligne commencera par un 0.
+L'image de la lettre « a » montre comment une ligne peut être décrite par une suite
+de nombres. Le premier nombre indique toujours le nombre de pixels blancs. Si le
+premier pixel est noir, la ligne commence donc par 0.
+
 \begin{enumerate}[a)]
-\item La première ligne est représentée par 1, 3, 1.
-\item La première ligne contient 1 pixel blanc, 3 noirs, puis 1 blanc. 
-\item La quatrième ligne est représentée par 0, 1, 3, 1.
+    \item La première ligne est représentée par 1, 3, 1.
+    \item Elle contient 1 pixel blanc, 3 pixels noirs, puis 1 pixel blanc.
+    \item Une ligne commençant par un pixel noir peut, par exemple, être représentée
+    par 0, 1, 3, 1.
 \end{enumerate}
-
-\vspace{2cm}
-\begin{exercice}
-Décoder l'image suivante:
-
-\begin{center}
-\begin{tikzpicture}[scale=.5]
-\foreach \x in {0,...,17}{
-	\draw (\x,0) -- +(0,13);
-	}
-
-\foreach \x in {0,...,13}{
-	\draw (0,\x) -- +(17,0);
-	}
-\draw (17,12.5) node[right] {11111111111111111}; 
-\draw (17,11.5) node[right] {11111110001110011}; 
-\draw (17,10.5) node[right] {11111001110001101}; 
-\draw (17,9.5) node[right] {11110111101101101}; 
-\draw (17,8.5) node[right] {11110110011101011}; 
-\draw (17,7.5) node[right] {11101001111110111}; 
-\draw (17,6.5) node[right] {11100111111110111}; 
-\draw (17,5.5) node[right] {11101111111110111}; 
-\draw (17,4.5) node[right] {11010111111101111}; 
-\draw (17,3.5) node[right] {10110111111101111}; 
-\draw (17,2.5) node[right] {10111001110011111}; 
-\draw (17,1.5) node[right] {11000110001111111}; 
-\draw (17,0.5) node[right] {11111111111111111}; 	
-
-\end{tikzpicture}
-\end{center}
-\end{exercice}
-
-
-\begin{exercice}
-Décoder l'image suivante: *
-
-\begin{center}
-\begin{tikzpicture}[scale=.5]
-\foreach \x in {0,...,16}{
-	\draw (\x,0) -- +(0,9);
-	}
-
-\foreach \x in {0,...,9}{
-	\draw (0,\x) -- +(16,0);
-	}
-
-\draw (17,8.5) node[right] {4,11}; 
-\draw (17,7.5) node[right] {4,9,2,1}; 
-\draw (17,6.5) node[right] {4,9,2,1}; 
-\draw (17,5.5) node[right] {4,11}; 
-\draw (17,4.5) node[right] {4,9}; 
-\draw (17,3.5) node[right] {4,9}; 
-\draw (17,2.5) node[right] {5,7}; 
-\draw (17,1.5) node[right] {0,16}; 
-\draw (17,0.5) node[right] {1,14}; 	
-
-\end{tikzpicture}
-\end{center}
-\end{exercice}
-
 
 \subsection{Coder une image en niveaux de gris}
 
-Plutôt que de simplement avoir 2 couleurs possibles, noir et blanc, on peut décider d'avoir N gris différents allant du plus sombre, le noir, au plus clair, le blanc.
+Une image en niveaux de gris ne contient pas uniquement du noir et du blanc : chaque
+pixel peut prendre une valeur correspondant à une intensité lumineuse.
 
-Pour stocker une image en mémoire, il suffit de convenir que chaque point de l’image est représenté par un nombre. 
+Avec un codage sur 8 bits, on dispose de :
 
-Ce dernier correspond à une certaine couleur.
+\[
+2^8 = 256
+\]
 
-Pour une image en 16 niveaux de gris, il faut que chaque point de l’image soit codé par un nombre en 4 bits.
+valeurs possibles, comprises entre 0 et 255 :
+\begin{itemize}
+    \item 0 représente le noir ;
+    \item 255 représente le blanc ;
+    \item les valeurs intermédiaires représentent différentes nuances de gris.
+\end{itemize}
 
-Si chaque point est codé sur 8 bits, l’image peut contenir 256 niveaux de gris différents. Si l'on souhaite que l'image contienne plus de couleurs, on pourra utiliser plus de bits pour chaque pixel.
-
+Dans une image en niveaux de gris, un seul nombre suffit donc pour décrire chaque
+pixel. Par comparaison, une image RVB utilise généralement trois nombres par pixel.
 
 \begin{center}
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm]{images/grayscale}
-\caption{Image en niveaux de gris}
+\caption{Image en niveaux de gris.}
 \end{figure}
 \end{center}
 
+Une image en niveaux de gris peut également être vue comme un tableau à deux
+dimensions contenant une valeur pour chaque pixel.
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+170 & 238 & 85 & 255 & 221 & 0 \\
+68 & 136 & 17 & 170 & 119 & 68 \\
+221 & 0 & 238 & 136 & 0 & 255 \\
+119 & 255 & 85 & 170 & 136 & 238 \\
+238 & 17 & 221 & 68 & 119 & 255 \\
+85 & 170 & 119 & 221 & 17 & 136
+\end{tabular}
+\end{center}
 
 \subsection{Coder une image en couleur}
 
-Pour représenter des images avec des couleurs réalistes, on peut utiliser la même méthode que pour les niveaux de gris, mais en utilisant 3 nombres différents, 1 pour chaque couleur primaire.
+\subsubsection{Le modèle RVB}
 
-Le code le plus utilisé est le codage {\bf RVB} (Rouge, Vert, Bleu) (RGB en anglais). 
+Notre œil possède notamment trois types de cônes sensibles à différentes zones du
+spectre lumineux. Les écrans exploitent ce principe en utilisant trois composantes
+lumineuses : le \textbf{rouge}, le \textbf{vert} et le \textbf{bleu}.
 
-Chacune de ces couleurs est codée sur 1 octet (8 bits). 
-Avec ce système, chaque pixel est codé sur 3 octets pour un total de 24 bits. 
+Le codage \textbf{RVB} (RGB en anglais) associe donc trois nombres à chaque pixel :
+une intensité de rouge, une intensité de vert et une intensité de bleu.
 
-La valeur décimale pour chaque couleur peut s’étendre de 0 à 255, cette limite est fixée par la valeur maximale qu’un octet peut représenter avec le système binaire.
+Si chaque composante est codée sur 8 bits, elle peut prendre $2^8=256$ valeurs,
+de 0 à 255. Un pixel nécessite alors :
 
-L’avantage du système RVB est sa simplicité, 
-il s’appuie sur les caractéristiques de la vision humaine pour fournir à l’utilisateur une reproduction des couleurs au plus proche de la réalité.
+\[
+8 + 8 + 8 = 24 \text{ bits} = 3 \text{ octets}.
+\]
 
+Le nombre de couleurs théoriquement représentables est :
+
+\[
+256^3 = 2^{24} = 16\,777\,216.
+\]
 
 \begin{center}
-\begin{figure}[H]
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Couleur} & \textbf{Rouge} & \textbf{Vert} & \textbf{Bleu} & \textbf{Hexadécimal} \\
+\midrule
+Blanc       & 255 & 255 & 255 & FFFFFF \\
+Rouge       & 255 & 0   & 0   & FF0000 \\
+Jaune       & 255 & 255 & 0   & FFFF00 \\
+Vert        & 0   & 255 & 0   & 00FF00 \\
+Cyan        & 0   & 255 & 255 & 00FFFF \\
+Bleu        & 0   & 0   & 255 & 0000FF \\
+Magenta     & 255 & 0   & 255 & FF00FF \\
+Gris moyen  & 128 & 128 & 128 & 808080 \\
+Noir        & 0   & 0   & 0   & 000000 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Calcul de la taille d'une image non compressée}
+
+Pour une image RVB sur 24 bits, chaque pixel occupe 3 octets. La taille brute d'une
+image est donc :
+
+\[
+\boxed{
+\text{taille}
+=
+\text{largeur}
+\times
+\text{hauteur}
+\times
+\text{nombre d'octets par pixel}
+}
+\]
+
+Par exemple, pour une image de $1280 \times 853$ pixels :
+
+\[
+1280 \times 853 \times 3
+=
+3\,275\,520 \text{ octets}
+\]
+
+soit environ $3{,}28$ Mo en écriture décimale, avant toute compression.
+
+\begin{center}
+\begin{figure}[h!]
 \centering
-\includegraphics[width=8cm]{images/RGB}
-\caption{Image RGB}
+\includegraphics[width=9cm]{images/image_rvb_24bits_1.jpg}
+\caption{Exemple d'une image RVB de définition $1280 \times 853$ pixels.}
 \end{figure}
 \end{center}
 
+\subsection{Images en couleurs indexées}
+
+Pour certaines images, il est inutile d'utiliser plus de 16 millions de couleurs.
+On peut définir à l'avance une \textbf{palette} contenant uniquement les couleurs
+utilisées dans l'image. Chaque pixel ne stocke alors plus directement une valeur RVB,
+mais le numéro d'une couleur dans cette palette.
+
+Si la palette contient au maximum 8 couleurs, 3 bits suffisent pour coder l'indice
+de chaque pixel, car :
+
+\[
+2^3 = 8.
+\]
+
+Pour une image de $14 \times 16$ pixels utilisant 3 bits par pixel, les indices des
+pixels occupent :
+
+\[
+14 \times 16 \times 3 = 672 \text{ bits} = 84 \text{ octets},
+\]
+
+auxquels il faut ajouter les données nécessaires pour stocker la palette.
 
 \begin{center}
-\begin{tikzpicture}[scale=.5]
-\foreach \x in {0,...,10}{
-	\draw (0,\x) -- +(30,0);
-	} 
-
-\draw (6,0) -- +(0,10);
-\draw (14,0) -- +(0,10);
-\draw (22,0) -- +(0,10);
-\draw (30,0) -- +(0,10);
-\draw (0,0) -- +(0,10);
-
-\filldraw[fill=lightgray] (6,9) rectangle (30,10);
-
-\draw (18,10.5) node {codage pixel en décimal};
-
-\filldraw[fill=black] (0,0) rectangle (6,1);
-\draw[white] (3,0.5) node {Noir};
-\draw (10,0.5) node {0};
-\draw (18,0.5) node {0};
-\draw (26,0.5) node {0};
-
-\definecolor{magenta}{rgb}{255,0,255}
-
-\filldraw[fill=magenta] (0,1) rectangle +(6,1);
-\draw (3,1.5) node {Magenta};
-\draw (10,1.5) node {255};
-\draw (18,1.5) node {0};
-\draw (26,1.5) node {255};
-
-
-\filldraw[fill=blue] (0,2) rectangle +(6,1);
-\draw[white] (3,2.5) node {Bleu};
-\draw (10,2.5) node {0};
-\draw (18,2.5) node {0};
-\draw (26,2.5) node {255};
-
-\definecolor{cyan}{rgb}{0,255,255}
-
-\filldraw[fill=cyan] (0,3) rectangle +(6,1);
-\draw (3,3.5) node {Cyan};
-\draw (10,3.5) node {0};
-\draw (18,3.5) node {255};
-\draw (26,3.5) node {255};
-
-\filldraw[fill=green] (0,4) rectangle +(6,1);
-\draw (3,4.5) node {Vert};
-\draw (10,4.5) node {0};
-\draw (18,4.5) node {255};
-\draw (26,4.5) node {0};
-
-\definecolor{jaune}{rgb}{255,255,0}
-
-\filldraw[fill=jaune] (0,5) rectangle +(6,1);
-\draw (3,5.5) node {Jaune};
-\draw (10,5.5) node {255};
-\draw (18,5.5) node {255};
-\draw (26,5.5) node {0};
-
-\filldraw[fill=red] (0,6) rectangle +(6,1);
-\draw (3,6.5) node {Rouge};
-\draw (10,6.5) node {255};
-\draw (18,6.5) node {0};
-\draw (26,6.5) node {0};
-
-\filldraw[fill=white] (0,7) rectangle +(6,1);
-\draw (3,7.5) node {Blanc};
-\draw (10,7.5) node {255};
-\draw (18,7.5) node {255};
-\draw (26,7.5) node {255};
-
-\filldraw[fill=gray] (0,8) rectangle +(6,1);
-\draw (3,8.5) node {Gris moyen};
-\draw (10,8.5) node {127};
-\draw (18,8.5) node {127};
-\draw (26,8.5) node {127};
-
-
-\draw (3,9.5) node {\bf Couleur};
-\draw (10,9.5) node {\bf R};
-\draw (18,9.5) node {\bf V};
-\draw (26,9.5) node {\bf B};
-
-\end{tikzpicture}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=6cm]{images/mario_couleurs_indexees_1.png}
+\caption{Exemple d'image utilisant un petit nombre de couleurs.}
+\end{figure}
 \end{center}
 
-Comme pour les systèmes de codage noir \& blanc et en niveau de gris, le système RVB utilise une norme pour le codage des couleurs. 
+Avec 8 bits par pixel, on peut référencer jusqu'à :
 
-Le codage sur 16 bits permet d'obtenir 65536 couleurs différentes. 
-Le codage sur 24 bits permet d'obtenir plus de 16 millions de couleurs ($2^{24}$ couleurs).
+\[
+2^8 = 256
+\]
 
-On considère souvent qu'un codage sur 32 bits permet de coder plus de couleurs que l’œil humain peut en distinguer.
+couleurs différentes dans la palette.
 
-Une photo de haute qualité est codée sur 32 bits.
+\begin{remarqueBox}
+La profondeur de couleur indique le nombre de bits utilisés pour représenter la
+couleur d'un pixel. Plus cette profondeur est grande, plus le nombre de couleurs
+représentables est important, mais plus la quantité de données à stocker augmente.
+\end{remarqueBox}
 
-On peut se contenter de 24 bits (soit 3 octets). Chaque octet représente une nuance des trois couleurs (rouge, vert et bleu), qui sont mélangées.
+\subsection{Compression et formats d'images}
 
 \subsubsection{Compression}
 
-\begin{remarque}
-La taille (poids) de l’image augmente en augmentant le nombre de nuances de couleurs.
-\end{remarque}
+La taille d'une image augmente avec sa définition et avec le nombre de bits utilisés
+pour coder chaque pixel. La \textbf{compression} vise à réduire la quantité de données
+nécessaire pour stocker ou transmettre une image.
 
-
-Une technique consiste à réduire l’information nécessaire pour représenter une image ou un son.
-
-Pour pallier les inconvénients des images trop lourdes, en particulier lors du stockage ou de la transmission et publication sur le web.
-
-Ce qui permet de réduire les exigences quant à l’espace disponible sur le disque ainsi que les coûts de communications lorsque l’image ou le son sont téléchargés.
-
-
-Malgré les techniques de compression, les images ou sons occupent encore souvent une place importante dans le programme.
+On distingue notamment :
+\begin{itemize}
+    \item la \textbf{compression sans perte}, qui permet de retrouver exactement les
+    données d'origine ;
+    \item la \textbf{compression avec perte}, qui supprime certaines informations afin
+    d'obtenir des fichiers plus petits.
+\end{itemize}
 
 \subsubsection{Les formats d'images}
 
 \begin{defi}
-Un format d'image est une représentation informatique de l'image, associée à des informations sur la façon dont l'image est codée et fournissant éventuellement des indications sur la manière de la décoder et de la manipuler.
+Un format d'image définit la manière dont les données de l'image sont organisées et
+stockées dans un fichier.
 \end{defi}
 
-Voici quelques formats d'images très utilisés:
-\begin{enumerate}[a)]
-
-\item {\bf BMP} : (prononcé {\it bitmap})	pas de compression, profondeur de couleurs au choix
-\item {\bf JPG ou JPEG} : (prononcé {\it j-peg})	compression possible ; qualité entre 0 et 100\%. Perte de qualité. Profondeur de 
-couleurs au choix. Bien adapté aux photos.
-\item {\bf GIF} :	compression sans perte de qualité. 256 couleurs max.
-\item {\bf PNG} :	compression sans perte. Intéressant pour les images avec peu de couleurs 
-(schémas), mais pas pour des photos.
-
-\end{enumerate}
-
+Quelques formats courants :
+\begin{itemize}
+    \item \textbf{BMP} : format matriciel généralement peu ou pas compressé ; les
+    fichiers peuvent être volumineux ;
+    \item \textbf{JPEG} : compression avec perte, particulièrement adaptée aux
+    photographies ;
+    \item \textbf{GIF} : palette limitée à 256 couleurs et possibilité d'animations ;
+    \item \textbf{PNG} : compression sans perte, transparence et bonne adaptation aux
+    schémas, captures d'écran et images comportant des aplats de couleurs ;
+    \item \textbf{SVG} : format vectoriel adapté aux logos, schémas et illustrations.
+\end{itemize}
 
 \section{Représentation du son}
-\subsubsection{Échantillonage}
 
-Un son est un signal physique qui correspond à la pression de l'air au cours du temps. C'est ces variations de pressions que captent nos oreilles. Une fois enregistré, ce son peut-être encodé de manière similaire aux images : on sélectionne une valeur à intervalles de temps réguliers et on encode chacune de ces valeurs en binaire. Cela revient à "pixeliser" le son.
+\subsection{Numérisation d'un son}
 
+Un son correspond à une variation de la pression de l'air au cours du temps. Un
+microphone transforme ces variations en un signal électrique continu. Pour stocker
+ce signal dans un ordinateur, il faut le transformer en une suite de nombres.
+
+Cette numérisation se fait principalement en deux étapes :
+\begin{enumerate}
+    \item \textbf{l'échantillonnage} : on mesure l'amplitude du signal à intervalles
+    de temps réguliers ;
+    \item \textbf{la quantification} : chaque mesure est arrondie à l'une des valeurs
+    numériques disponibles, puis codée en binaire.
+\end{enumerate}
 
 \begin{center}
 \begin{figure}[h!]
+\centering
 \includegraphics[width=12cm]{images/son}
+\caption{Principe de l'échantillonnage d'un signal sonore.}
 \end{figure}
 \end{center}
 
-Ce processus est nommé l'échantillonnage et on échantillonne en général les sons à 44 kHz (ce qui correspond à une valeur toutes les 1/44000 secondes, soit toutes les 23 $\mu s$), soit 2x plus que le son le plus aigu que l'oreille humaine peut entendre (22kHz).
+La \textbf{fréquence d'échantillonnage} correspond au nombre de mesures effectuées
+chaque seconde. Elle s'exprime en hertz (Hz).
 
-\subsubsection{Les formats audios}
+Un CD audio utilise une fréquence d'échantillonnage de 44,1 kHz, soit 44'100
+échantillons par seconde et par canal. Chaque échantillon est généralement codé sur
+16 bits.
+
+\subsection{Taille d'un son numérique}
+
+La taille brute d'un enregistrement audio dépend de quatre paramètres :
+\begin{itemize}
+    \item la fréquence d'échantillonnage ;
+    \item le nombre de bits utilisés pour chaque échantillon ;
+    \item le nombre de canaux (1 pour mono, 2 pour stéréo) ;
+    \item la durée de l'enregistrement.
+\end{itemize}
+
+\[
+\boxed{
+\text{taille en bits}
+=
+\text{fréquence d'échantillonnage}
+\times
+\text{profondeur de codage}
+\times
+\text{nombre de canaux}
+\times
+\text{durée}
+}
+\]
+
+Exemple : pour 5 minutes de son stéréo de qualité CD :
+
+\[
+44\,100 \times 16 \times 2 \times 300
+=
+423\,360\,000 \text{ bits}.
+\]
+
+Cela correspond à :
+
+\[
+\frac{423\,360\,000}{8}
+=
+52\,920\,000 \text{ octets}
+\simeq 52{,}9 \text{ Mo},
+\]
+
+sans compression.
+
+\subsection{Les formats audio}
+
+\begin{itemize}
+    \item \textbf{WAV} peut stocker du son PCM non compressé ; les fichiers sont alors
+    volumineux mais conservent les échantillons du signal ;
+    \item \textbf{MP3} utilise une compression avec perte afin de réduire fortement la
+    taille des fichiers ;
+    \item \textbf{MIDI} ne stocke pas directement un signal sonore échantillonné : il
+    décrit notamment les notes, leur durée et les instruments. Il est donc adapté à
+    la musique pilotant des instruments virtuels, mais pas à l'enregistrement direct
+    d'un son ambiant.
+\end{itemize}
+
+\section{La vidéo comme donnée numérique}
+
+Une vidéo numérique associe principalement :
 \begin{enumerate}
-\item Cette technique est celle utilisée dans certains formats de sons "bruts" comme le RAW ou WAV. 
-
-\item D'autres formats, comme le MP3, compressent encore ces informations, comme le fait le JPG pour les images.
-
-\item D'autres formats, comme le MIDI, n'utilisent pas cette méthode et font le choix de noter directement l'équivalent des notes de musique et des instruments sur lesquels elles sont jouées. Ce format est adapté aux musiques composées sur synthétiseurs, mais pas aux sons enregistrés dans la nature.
-
+    \item une suite d'images fixes, appelées \textbf{images} ou \textit{frames},
+    affichées rapidement les unes après les autres ;
+    \item un ou plusieurs signaux sonores synchronisés avec ces images ;
+    \item éventuellement d'autres données, comme des sous-titres.
 \end{enumerate}
+
+Deux caractéristiques importantes de la partie visuelle sont :
+\begin{itemize}
+    \item la \textbf{définition} de chaque image, par exemple $1920 \times 1080$ pixels
+    pour une vidéo Full HD ;
+    \item la \textbf{fréquence d'images}, exprimée en images par seconde
+    (\textit{frames per second}, fps). Par exemple : 24 fps au cinéma, souvent 25 ou
+    30 fps pour la télévision, et 60 fps ou davantage dans certains jeux vidéo.
+\end{itemize}
+
+Le son est numérisé par échantillonnage puis stocké de manière synchronisée avec les
+images.
+
 
 \section{Exercices}
 
@@ -434,7 +629,7 @@ Traduire en lettre les mots suivants qui sont codés en ASCII (hexadécimal):
 \fi 
 
 \begin{exercice}
-Décoder l'image suivante:
+Décoder l'image suivante :
 
 \begin{center}
 \begin{tikzpicture}[scale=.5]
@@ -466,7 +661,7 @@ Décoder l'image suivante:
 
 %\newpage
 \begin{exercice}
-Encoder l'image suivante:
+Encoder l'image suivante :
 
 \begin{center}
 \begin{figure}[h!]
@@ -480,15 +675,15 @@ Encoder l'image suivante:
 
 \begin{exercice}
     
-Combien d’octets occupe une image de 200 x 300 pixels en noir et blanc?
+Combien d’octets occupe une image de 200 $\times$ 300 pixels en noir et blanc?
 \end{exercice}
 
 \begin{exercice}
 \begin{enumerate}
 \item 
-    Combien d'octets occupe une image de 300 x 500 pixels en niveau de gris codé sur 8 bits ?
+    Combien d'octets occupe une image de 300 $\times$ 500 pixels en niveaux de gris, codée sur 8 bits ?
       \item
-        Même question, mais si on a une en couleur pour laquelle chaque couleur est codée en RVB sur 24 bits
+        Même question pour une image en couleur dont chaque pixel est codé en RVB sur 24 bits.
 \end{enumerate}
 
 \end{exercice}
@@ -500,22 +695,23 @@ Combien d’octets occupe une image de 200 x 300 pixels en noir et blanc?
     
     \item Sur 8 bits, quel gris est le plus foncé entre celui représenté par la valeur 42 et celui représenté par la valeur 233 ? 
 
-    \item Quel est d'après vous le code RGB du violet foncé ? %160-0-160
+    \item Quel est, d'après vous, le code RGB du violet foncé ? %160-0-160
 
-    \item Quelle est d'après vous la couleur correspondant au code RGB suivant : (255, 128, 0) ? % orange
+    \item Quelle est, d'après vous, la couleur correspondant au code RGB suivant : (255, 128, 0) ? % orange
 \end{enumerate}
 \end{exercice}
 
 \begin{exercice}
-Si une image codée en RVB (RGB) de 16,7 millions de couleurs occupe 2400 octets, de combien de pixels sera-t-elle constituée ?
+Si une image codée en RVB (RGB) de 16,7 millions de couleurs occupe 2'400 octets, de combien de pixels sera-t-elle constituée ?
 \end{exercice}
 
 
 \begin{exercice}
- * J’aimerais imprimer une image full hd (1920 x 1080 pixels) sur mon imprimante qui a une résolution de 1200 dpi. 
-Quelles seront les dimensions en centimètre (largeur et hauteur) ?
+* J’aimerais imprimer une image Full HD ($1920 \times 1080$ pixels) sur une imprimante ayant une résolution de 1'200 dpi. 
+Quelles seront ses dimensions en centimètres (largeur et hauteur) ?
 
 \end{exercice}
+
 
 
 
